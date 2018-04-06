@@ -1,11 +1,13 @@
 open MomentRe;
 
+open BsReactDates;
+
 type action =
   | DatesChange(Moment.t, Moment.t)
-  | FocusChange(RD.FocusedInput.t);
+  | FocusChange(ReactDates.FocusedInput.t);
 
 type state = {
-  focusedInput: RD.FocusedInput.t,
+  focusedInput: ReactDates.FocusedInput.t,
   startDate: Moment.t,
   endDate: Moment.t,
 };
@@ -16,8 +18,8 @@ let make = _children => {
   ...component,
   initialState: () => {
     focusedInput: StartDate,
-    startDate: moment("2018-01-01"),
-    endDate: moment("2018-10-01"),
+    startDate: momentNow(),
+    endDate: Moment.add(~duration=duration(5, `days), momentNow()),
   },
   reducer: (action, state) =>
     switch (action) {
@@ -27,13 +29,15 @@ let make = _children => {
       ReasonReact.Update({...state, focusedInput})
     },
   render: self =>
-    <RD
+    <DateRangePicker
       startDate=self.state.startDate
       startDateId="startDateId"
       endDate=self.state.endDate
       endDateId="endDateId"
       focusedInput=self.state.focusedInput
       onDatesChange=(v => self.send(DatesChange(v##startDate, v##endDate)))
-      onFocusChange=(v => self.send(FocusChange(RD.FocusedInput.fromJS(v))))
+      onFocusChange=(
+        v => self.send(FocusChange(ReactDates.FocusedInput.fromJS(v)))
+      )
     />,
 };
