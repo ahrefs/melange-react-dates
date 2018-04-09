@@ -3,13 +3,13 @@ open MomentRe;
 open BsReactDates;
 
 type action =
-  | DatesChange(Moment.t, Moment.t)
-  | FocusChange(ReactDates.FocusedInput.t);
+  | DatesChange(option(Moment.t), option(Moment.t))
+  | FocusChange(option(ReactDates.focusedInput));
 
 type state = {
-  focusedInput: ReactDates.FocusedInput.t,
-  startDate: Moment.t,
-  endDate: Moment.t,
+  focusedInput: option(ReactDates.focusedInput),
+  startDate: option(Moment.t),
+  endDate: option(Moment.t),
 };
 
 let component = ReasonReact.reducerComponent("Example1");
@@ -17,9 +17,9 @@ let component = ReasonReact.reducerComponent("Example1");
 let make = _children => {
   ...component,
   initialState: () => {
-    focusedInput: StartDate,
-    startDate: momentNow(),
-    endDate: Moment.add(~duration=duration(5, `days), momentNow()),
+    focusedInput: Some(`startDate),
+    startDate: Some(momentNow()),
+    endDate: Some(Moment.add(~duration=duration(5, `days), momentNow())),
   },
   reducer: (action, state) =>
     switch (action) {
@@ -30,14 +30,19 @@ let make = _children => {
     },
   render: self =>
     <DateRangePicker
-      startDate=self.state.startDate
+      startDate=?self.state.startDate
       startDateId="startDateId"
-      endDate=self.state.endDate
+      endDate=?self.state.endDate
       endDateId="endDateId"
-      focusedInput=self.state.focusedInput
-      onDatesChange=(v => self.send(DatesChange(v##startDate, v##endDate)))
+      focusedInput=?self.state.focusedInput
+      onDatesChange=(
+        v =>
+          self.send(
+            DatesChange(Js.toOption(v##startDate), Js.toOption(v##endDate)),
+          )
+      )
       onFocusChange=(
-        v => self.send(FocusChange(ReactDates.FocusedInput.fromJS(v)))
+        v => self.send(FocusChange(ReactDates.nullableFocusedInputToJs(v)))
       )
     />,
 };

@@ -44,13 +44,13 @@ external dateRangePicker : ReasonReact.reactClass = "DateRangePicker";
 [@bs.obj]
 external makeProps :
   (
-    ~startDate: Moment.t,
-    ~startDateId: string,
-    ~endDate: Moment.t,
-    ~endDateId: string,
     ~onDatesChange: datesObj => unit,
-    ~focusedInput: Js.Nullable.t(string),
     ~onFocusChange: Js.nullable(string) => unit,
+    ~startDate: Moment.t=?,
+    ~startDateId: string=?,
+    ~endDate: Moment.t=?,
+    ~endDateId: string=?,
+    ~focusedInput: [@bs.string] [ | `startDate | `endDate]=?,
     /* input related props */
     ~startDatePlaceholderText: string=?,
     ~endDatePlaceholderText: string=?,
@@ -121,13 +121,13 @@ external makeProps :
 
 let make =
     (
-      ~startDate,
-      ~startDateId,
-      ~endDate,
-      ~endDateId,
       ~onDatesChange,
-      ~focusedInput,
       ~onFocusChange,
+      ~startDate=?,
+      ~startDateId=?,
+      ~endDate=?,
+      ~endDateId=?,
+      ~focusedInput=?,
       ~startDatePlaceholderText=?,
       ~endDatePlaceholderText=?,
       ~disabled=?,
@@ -183,13 +183,13 @@ let make =
     ~reactClass=dateRangePicker,
     ~props=
       makeProps(
-        ~startDate,
-        ~startDateId,
-        ~endDate,
-        ~endDateId,
         ~onDatesChange,
-        ~focusedInput=focusedInput |> FocusedInput.toJS,
         ~onFocusChange,
+        ~startDate?,
+        ~startDateId?,
+        ~endDate?,
+        ~endDateId?,
+        ~focusedInput?,
         ~startDatePlaceholderText?,
         ~endDatePlaceholderText?,
         ~disabled?,

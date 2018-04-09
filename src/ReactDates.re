@@ -6,30 +6,19 @@ open MomentRe;
 
 type day;
 
-module FocusedInput = {
-  type t =
-    | StartDate
-    | EndDate
-    | Null;
-  let toJS = v =>
-    switch (v) {
-    | StartDate => "startDate" |> Js.Nullable.return
-    | EndDate => "endDate" |> Js.Nullable.return
-    | Null => Js.Nullable.null
-    };
-  let fromJS = v =>
-    switch (Js.Nullable.toOption(v)) {
-    | Some("startDate") => StartDate
-    | Some("endDate") => EndDate
-    | Some(_)
-    | None => Null
-    };
-};
+[@bs.deriving jsConverter]
+type focusedInput = [ | `startDate | `endDate];
+
+let nullableFocusedInputToJs = v =>
+  v
+  |> Js.toOption
+  |> Js.Option.map((. b) => focusedInputFromJs(b))
+  |> Belt.Option.flatMap(_, x => x);
 
 type datesObj = {
   .
-  "startDate": Moment.t,
-  "endDate": Moment.t,
+  "startDate": Js.nullable(Moment.t),
+  "endDate": Js.nullable(Moment.t),
 };
 
 let fromOpt = Js.Nullable.fromOption;
