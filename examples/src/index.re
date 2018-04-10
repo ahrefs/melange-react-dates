@@ -1,3 +1,5 @@
+[%bs.raw {|require('./index.css')|}];
+
 [%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
 
 ReactDOMRe.renderToElementWithId(

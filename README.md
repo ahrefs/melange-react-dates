@@ -29,6 +29,16 @@ To include styles
 [%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
 ```
 
+`react-dates` [assumes](https://github.com/airbnb/react-dates/issues/798) that `box-sizing: border-box` is set globally in your page's CSS. At least do this, to make it display properly.
+
+```css
+.DateRangePicker *,
+.SingleDatePicker *,
+.DayPickerRangeController * {
+  box-sizing: border-box;
+}
+```
+
 ## TODO
 
 * [x] [DateRangePicker](https://github.com/airbnb/react-dates#daterangepicker)

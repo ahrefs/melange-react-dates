@@ -17,7 +17,7 @@ let component = ReasonReact.reducerComponent("Example1");
 let make = _children => {
   ...component,
   initialState: () => {
-    focusedInput: Some(`startDate),
+    focusedInput: None,
     startDate: Some(momentNow()),
     endDate: Some(Moment.add(~duration=duration(5, `days), momentNow())),
   },
