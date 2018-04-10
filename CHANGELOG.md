@@ -1,3 +1,8 @@
+## 2.0.1 (Apr 10, 2018)
+
+* add note about `box-sizing`
+* fix styles in example
+
 ## 2.0.0 (Apr 9, 2018)
 
 * `startDate`/`endDate` are optional
