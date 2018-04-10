@@ -1,6 +1,6 @@
 ## 2.0.1 (Apr 10, 2018)
 
-* add note about `box-sizing`
+* add note about `box-sizing` to readme
 * fix styles in example
 
 ## 2.0.0 (Apr 9, 2018)
