@@ -2,45 +2,6 @@ open ReactDates;
 
 open MomentRe;
 
-module Phrases = {
-  type t;
-  [@bs.obj]
-  external make :
-    (
-      ~closeDatePicker: string,
-      ~clearDates: string,
-      ~focusStartDate: string,
-      ~jumpToPrevMonth: string,
-      ~jumpToNextMonth: string,
-      ~keyboardShortcuts: string,
-      ~showKeyboardShortcutsPanel: string,
-      ~hideKeyboardShortcutsPanel: string,
-      ~openThisPanel: string,
-      ~enterKey: string,
-      ~leftArrowRightArrow: string,
-      ~upArrowDownArrow: string,
-      ~pageUpPageDown: string,
-      ~homeEnd: string,
-      ~escape: string,
-      ~questionMark: string,
-      ~selectFocusedDate: string,
-      ~moveFocusByOneDay: string,
-      ~moveFocusByOneWeek: string,
-      ~moveFocusByOneMonth: string,
-      ~moveFocustoStartAndEndOfWeek: string,
-      ~returnFocusToInput: string,
-      ~keyboardNavigationInstructions: string,
-      ~chooseAvailableStartDate: string => string,
-      ~chooseAvailableEndDate: string => string,
-      ~dateIsUnavailable: string => string
-    ) =>
-    t =
-    "";
-};
-
-[@bs.module "react-dates"]
-external dateRangePicker : ReasonReact.reactClass = "DateRangePicker";
-
 [@bs.obj]
 external makeProps :
   (
@@ -112,12 +73,17 @@ external makeProps :
     ~displayFormat: DisplayFormat.t=?,
     ~monthFormat: string=?,
     ~weekDayFormat: string=?,
-    ~phrases: Phrases.t=?,
+    ~phrases: DateRangePickerPhrases.t=?,
     ~dayAriaLabelFormat: string=?,
     unit
   ) =>
   _ =
   "";
+
+[@bs.module "react-dates"]
+external dateRangePickerAbs : ReasonReact.reactClass = "DateRangePicker";
+
+let dateRangePicker = ReasonReact.statelessComponent("DateRangePicker");
 
 let make =
     (
@@ -178,70 +144,87 @@ let make =
       ~phrases=?,
       ~dayAriaLabelFormat=?,
       children,
-    ) =>
-  ReasonReact.wrapJsForReason(
-    ~reactClass=dateRangePicker,
-    ~props=
-      makeProps(
-        ~onDatesChange,
-        ~onFocusChange,
-        ~startDate?,
-        ~startDateId?,
-        ~endDate?,
-        ~endDateId?,
-        ~focusedInput?,
-        ~startDatePlaceholderText?,
-        ~endDatePlaceholderText?,
-        ~disabled?,
-        ~required=?required |> optBoolToOptBoolean,
-        ~readOnly=?readOnly |> optBoolToOptBoolean,
-        ~screenReaderInputMessage?,
-        ~showClearDates=?showClearDates |> optBoolToOptBoolean,
-        ~showDefaultInputIcon=?showDefaultInputIcon |> optBoolToOptBoolean,
-        ~customInputIcon?,
-        ~customArrowIcon?,
-        ~customCloseIcon?,
-        ~inputIconPosition?,
-        ~noBorder=?noBorder |> optBoolToOptBoolean,
-        ~block=?block |> optBoolToOptBoolean,
-        ~small=?small |> optBoolToOptBoolean,
-        ~regular=?regular |> optBoolToOptBoolean,
-        ~renderMonth?,
-        ~orientation?,
-        ~anchorDirection?,
-        ~horizontalMargin?,
-        ~withPortal=?withPortal |> optBoolToOptBoolean,
-        ~withFullScreenPortal=?withFullScreenPortal |> optBoolToOptBoolean,
-        ~daySize?,
-        ~isRTL=?isRTL |> optBoolToOptBoolean,
-        ~initialVisibleMonth?,
-        ~firstDayOfWeek?,
-        ~numberOfMonths?,
-        ~keepOpenOnDateSelect=?keepOpenOnDateSelect |> optBoolToOptBoolean,
-        ~reopenPickerOnClearDates=?
-          reopenPickerOnClearDates |> optBoolToOptBoolean,
-        ~renderCalendarInfo?,
-        ~hideKeyboardShortcutsPanel=?
-          hideKeyboardShortcutsPanel |> optBoolToOptBoolean,
-        ~navPrev?,
-        ~navNext?,
-        ~onPrevMonthClick?,
-        ~onNextMonthClick?,
-        ~onClose?,
-        ~transitionDuration?,
-        ~renderCalendarDay?,
-        ~renderDayContents?,
-        ~minimumNights?,
-        ~enableOutsideDays=?enableOutsideDays |> optBoolToOptBoolean,
-        ~isDayBlocked?,
-        ~isOutsideRange?,
-        ~isDayHighlighted?,
-        ~displayFormat=?displayFormat |> DisplayFormat.encodeOpt,
-        ~monthFormat?,
-        ~weekDayFormat?,
-        ~phrases?,
-        ~dayAriaLabelFormat?,
-        (),
+    ) => {
+  let handleDatesChange = v =>
+    onDatesChange({
+      "startDate": Js.toOption(v##startDate),
+      "endDate": Js.toOption(v##endDate),
+    });
+  let handleFocusChange = v =>
+    onFocusChange(ReactDates.nullableFocusedInputToJs(v));
+  {
+    ...dateRangePicker,
+    render: _self =>
+      ReasonReact.element(
+        ReasonReact.wrapJsForReason(
+          ~reactClass=dateRangePickerAbs,
+          ~props=
+            makeProps(
+              ~onDatesChange=handleDatesChange,
+              ~onFocusChange=handleFocusChange,
+              ~startDate?,
+              ~startDateId?,
+              ~endDate?,
+              ~endDateId?,
+              ~focusedInput?,
+              ~startDatePlaceholderText?,
+              ~endDatePlaceholderText?,
+              ~disabled?,
+              ~required=?required |> optBoolToOptBoolean,
+              ~readOnly=?readOnly |> optBoolToOptBoolean,
+              ~screenReaderInputMessage?,
+              ~showClearDates=?showClearDates |> optBoolToOptBoolean,
+              ~showDefaultInputIcon=?
+                showDefaultInputIcon |> optBoolToOptBoolean,
+              ~customInputIcon?,
+              ~customArrowIcon?,
+              ~customCloseIcon?,
+              ~inputIconPosition?,
+              ~noBorder=?noBorder |> optBoolToOptBoolean,
+              ~block=?block |> optBoolToOptBoolean,
+              ~small=?small |> optBoolToOptBoolean,
+              ~regular=?regular |> optBoolToOptBoolean,
+              ~renderMonth?,
+              ~orientation?,
+              ~anchorDirection?,
+              ~horizontalMargin?,
+              ~withPortal=?withPortal |> optBoolToOptBoolean,
+              ~withFullScreenPortal=?
+                withFullScreenPortal |> optBoolToOptBoolean,
+              ~daySize?,
+              ~isRTL=?isRTL |> optBoolToOptBoolean,
+              ~initialVisibleMonth?,
+              ~firstDayOfWeek?,
+              ~numberOfMonths?,
+              ~keepOpenOnDateSelect=?
+                keepOpenOnDateSelect |> optBoolToOptBoolean,
+              ~reopenPickerOnClearDates=?
+                reopenPickerOnClearDates |> optBoolToOptBoolean,
+              ~renderCalendarInfo?,
+              ~hideKeyboardShortcutsPanel=?
+                hideKeyboardShortcutsPanel |> optBoolToOptBoolean,
+              ~navPrev?,
+              ~navNext?,
+              ~onPrevMonthClick?,
+              ~onNextMonthClick?,
+              ~onClose?,
+              ~transitionDuration?,
+              ~renderCalendarDay?,
+              ~renderDayContents?,
+              ~minimumNights?,
+              ~enableOutsideDays=?enableOutsideDays |> optBoolToOptBoolean,
+              ~isDayBlocked?,
+              ~isOutsideRange?,
+              ~isDayHighlighted?,
+              ~displayFormat=?displayFormat |> DisplayFormat.encodeOpt,
+              ~monthFormat?,
+              ~weekDayFormat?,
+              ~phrases?,
+              ~dayAriaLabelFormat?,
+              (),
+            ),
+          children,
+        ),
       ),
-    children,
-  );
+  };
+};

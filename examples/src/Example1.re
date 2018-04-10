@@ -35,14 +35,7 @@ let make = _children => {
       endDate=?self.state.endDate
       endDateId="endDateId"
       focusedInput=?self.state.focusedInput
-      onDatesChange=(
-        v =>
-          self.send(
-            DatesChange(Js.toOption(v##startDate), Js.toOption(v##endDate)),
-          )
-      )
-      onFocusChange=(
-        v => self.send(FocusChange(ReactDates.nullableFocusedInputToJs(v)))
-      )
+      onDatesChange=(v => self.send(DatesChange(v##startDate, v##endDate)))
+      onFocusChange=(v => self.send(FocusChange(v)))
     />,
 };
