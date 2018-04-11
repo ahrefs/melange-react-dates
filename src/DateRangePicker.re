@@ -5,7 +5,7 @@ open MomentRe;
 [@bs.obj]
 external makeProps :
   (
-    ~onDatesChange: datesObj => unit,
+    ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Moment.t=?,
     ~startDateId: string=?,
@@ -59,7 +59,7 @@ external makeProps :
     ~navNext: ReasonReact.reactElement=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
-    ~onClose: datesObj => unit=?,
+    ~onClose: Dates.tJs => unit=?,
     ~transitionDuration: int=?, /* todo: not negative */
     /* day presentation and interaction related props */
     ~renderCalendarDay: Moment.t => StrOrNode.t=?,
@@ -145,13 +145,19 @@ let make =
       ~dayAriaLabelFormat=?,
       children,
     ) => {
-  let handleDatesChange = v =>
-    onDatesChange({
-      "startDate": Js.toOption(v##startDate),
-      "endDate": Js.toOption(v##endDate),
-    });
-  let handleFocusChange = v =>
-    onFocusChange(ReactDates.nullableFocusedInputToJs(v));
+  let handleDatesChange = v => v |> Dates.fromJs |> onDatesChange;
+  let handleFocusChange = v => onFocusChange(nullableFocusedInputToJs(v));
+  let handleClose =
+    Js.Option.map(
+      (. func) => {
+        let res = v => v |> Dates.fromJs |> func;
+        res;
+      },
+      onClose,
+    );
+  let handleIsDayBlocked = wrapOptCbToReturnBoolean(isDayBlocked);
+  let handleIsOutsideRange = wrapOptCbToReturnBoolean(isOutsideRange);
+  let handleIsDayHighlighted = wrapOptCbToReturnBoolean(isDayHighlighted);
   {
     ...dateRangePicker,
     render: _self =>
@@ -207,15 +213,15 @@ let make =
               ~navNext?,
               ~onPrevMonthClick?,
               ~onNextMonthClick?,
-              ~onClose?,
+              ~onClose=?handleClose,
               ~transitionDuration?,
               ~renderCalendarDay?,
               ~renderDayContents?,
               ~minimumNights?,
               ~enableOutsideDays=?enableOutsideDays |> optBoolToOptBoolean,
-              ~isDayBlocked?,
-              ~isOutsideRange?,
-              ~isDayHighlighted?,
+              ~isDayBlocked=?handleIsDayBlocked,
+              ~isOutsideRange=?handleIsOutsideRange,
+              ~isDayHighlighted=?handleIsDayHighlighted,
               ~displayFormat=?displayFormat |> DisplayFormat.encodeOpt,
               ~monthFormat?,
               ~weekDayFormat?,

@@ -35,7 +35,8 @@ let make = _children => {
       endDate=?self.state.endDate
       endDateId="endDateId"
       focusedInput=?self.state.focusedInput
-      onDatesChange=(v => self.send(DatesChange(v##startDate, v##endDate)))
+      onDatesChange=(v => self.send(DatesChange(v.startDate, v.endDate)))
       onFocusChange=(v => self.send(FocusChange(v)))
+      isOutsideRange=((_) => false)
     />,
 };

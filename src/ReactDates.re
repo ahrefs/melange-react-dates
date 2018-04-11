@@ -1,9 +1,29 @@
+open MomentRe;
+
 /* Have to call initialize in order this to work
  * https://github.com/airbnb/react-dates#initialize */
 let _ = Initialize.initialize;
 
-open MomentRe;
+/* Utils */
+let wrapOptCbToReturnBoolean = optCallback =>
+  Js.Option.map(
+    (. func) => {
+      let res = v => v |> func |> Js.Boolean.to_js_boolean;
+      res;
+    },
+    optCallback,
+  );
 
+let fromOpt = Js.Nullable.fromOption;
+
+let toOpt = Js.Nullable.toOption;
+
+let optMap = Js.Nullable.toOption;
+
+let optBoolToOptBoolean = v =>
+  Js.Option.map((. b) => Js.Boolean.to_js_boolean(b), v);
+
+/* core types */
 type day;
 
 [@bs.deriving jsConverter]
@@ -15,16 +35,24 @@ let nullableFocusedInputToJs = v =>
   |> Js.Option.map((. b) => focusedInputFromJs(b))
   |> Belt.Option.flatMap(_, x => x);
 
-type datesObj = {
-  .
-  "startDate": Js.nullable(Moment.t),
-  "endDate": Js.nullable(Moment.t),
+module Dates = {
+  type t = {
+    startDate: option(Moment.t),
+    endDate: option(Moment.t),
+  };
+  type tJs = {
+    .
+    "startDate": Js.nullable(Moment.t),
+    "endDate": Js.nullable(Moment.t),
+  };
+  let toJs: t => tJs =
+    v => {
+      "startDate": v.startDate |> fromOpt,
+      "endDate": v.endDate |> fromOpt,
+    };
+  let fromJs: tJs => t =
+    v => {startDate: v##startDate |> toOpt, endDate: v##endDate |> toOpt};
 };
-
-let fromOpt = Js.Nullable.fromOption;
-
-let optBoolToOptBoolean = v =>
-  Js.Option.map((. b) => Js.Boolean.to_js_boolean(b), v);
 
 module StrOrNode = {
   type t;
