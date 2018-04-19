@@ -1,6 +1,6 @@
 {
-  "name": "bs-react-dates-examples",
-  "version": "0.1.0",
+  "name": "@ahrefs/bs-react-dates-examples",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "prestart": "npm install && bsb -clean-world",
