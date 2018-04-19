@@ -6,8 +6,7 @@
     "prestart": "npm install && bsb -clean-world",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject",
-    "prepare": "npm link bs-platform"
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "bs-moment": "^0.2.4",
@@ -16,8 +15,8 @@
     "reason-scripts": "0.8.0"
   },
   "devDependencies": {
-    "bs-jest": "^0.3.2",
-    "reason-react": "^0.3.2",
+    "bs-platform": "^3.0.0",
+    "reason-react": "^0.3.4",
     "@ahrefs/bs-react-dates": "file:../"
   }
 }

@@ -5,23 +5,11 @@ open MomentRe;
 let _ = Initialize.initialize;
 
 /* Utils */
-let wrapOptCbToReturnBoolean = optCallback =>
-  Js.Option.map(
-    (. func) => {
-      let res = v => v |> func |> Js.Boolean.to_js_boolean;
-      res;
-    },
-    optCallback,
-  );
-
 let fromOpt = Js.Nullable.fromOption;
 
 let toOpt = Js.Nullable.toOption;
 
 let optMap = Js.Nullable.toOption;
-
-let optBoolToOptBoolean = v =>
-  Js.Option.map((. b) => Js.Boolean.to_js_boolean(b), v);
 
 /* core types */
 type day;
