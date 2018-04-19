@@ -1,6 +1,6 @@
 open MomentRe;
 
-open BsReactDates;
+open AhrefsBsReactDates;
 
 type action =
   | DatesChange(option(Moment.t), option(Moment.t))

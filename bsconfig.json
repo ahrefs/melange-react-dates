@@ -1,5 +1,5 @@
 {
-  "name": "bs-react-dates",
+  "name": "@ahrefs/bs-react-dates",
   "namespace": true,
   "sources": ["src"],
   "bs-dependencies": ["reason-react", "bs-moment"],

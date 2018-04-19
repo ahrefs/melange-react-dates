@@ -14,12 +14,12 @@ Feel free to create an issue or PR.
 npm install --save @ahrefs/bs-react-dates
 ```
 
-Then add `bs-react-dates` to `bs-dependencies` in your `bsconfig.json`:
+Then add `@ahrefs/bs-react-dates` to `bs-dependencies` in your `bsconfig.json`:
 
 ```js
 {
   ...
-  "bs-dependencies": ["bs-react-dates"]
+  "bs-dependencies": ["@ahrefs/bs-react-dates"]
 }
 ```
 
