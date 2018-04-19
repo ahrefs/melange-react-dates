@@ -8,7 +8,7 @@
 
 Feel free to create an issue or PR.
 
-## Installation, [npm](https://www.npmjs.com/package/@ahrefs/bs-react-dnd)
+## Installation, [npm](https://www.npmjs.com/package/@ahrefs/bs-react-dates)
 
 ```sh
 npm install --save bs-react-dates
