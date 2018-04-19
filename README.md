@@ -11,7 +11,7 @@ Feel free to create an issue or PR.
 ## Installation, [npm](https://www.npmjs.com/package/@ahrefs/bs-react-dates)
 
 ```sh
-npm install --save bs-react-dates
+npm install --save @ahrefs/bs-react-dates
 ```
 
 Then add `bs-react-dates` to `bs-dependencies` in your `bsconfig.json`:
