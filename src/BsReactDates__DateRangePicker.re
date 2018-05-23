@@ -4,9 +4,10 @@ open MomentRe;
 
 let nullableFocusedInputToJs = v =>
   v
-  |> Js.toOption
-  |> Js.Option.map((. b) => focusedInputFromJs(b))
-  |> Belt.Option.flatMap(_, x => x);
+  |. Js.toOption
+  |. Belt.Option.map(focusedInputFromJs)
+  /* upwrap option(option(..)) */
+  |. Belt.Option.flatMap(x => x);
 
 [@bs.obj]
 external makeProps :
@@ -151,15 +152,15 @@ let make =
       ~dayAriaLabelFormat=?,
       children,
     ) => {
-  let handleDatesChange = v => v |> Dates.fromJs |> onDatesChange;
-  let handleFocusChange = v => onFocusChange(nullableFocusedInputToJs(v));
+  let handleDatesChange = v => v |. Dates.fromJs |. onDatesChange;
+  let handleFocusChange = v => v |. nullableFocusedInputToJs |. onFocusChange;
   let handleClose =
-    Js.Option.map(
-      (. func) => {
-        let res = v => v |> Dates.fromJs |> func;
+    Belt.Option.map(
+      onClose,
+      func => {
+        let res = v => v |. Dates.fromJs |. func;
         res;
       },
-      onClose,
     );
   {
     ...dateRangePicker,
@@ -220,7 +221,7 @@ let make =
               ~isDayBlocked?,
               ~isOutsideRange?,
               ~isDayHighlighted?,
-              ~displayFormat=?displayFormat |> DisplayFormat.encodeOpt,
+              ~displayFormat=?displayFormat |. DisplayFormat.encodeOpt,
               ~monthFormat?,
               ~weekDayFormat?,
               ~phrases?,
