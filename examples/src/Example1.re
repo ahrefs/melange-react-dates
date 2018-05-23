@@ -1,13 +1,13 @@
 open MomentRe;
 
-open AhrefsBsReactDates;
+open BsReactDates;
 
 type action =
   | DatesChange(option(Moment.t), option(Moment.t))
-  | FocusChange(option(ReactDates.focusedInput));
+  | FocusChange(option(Utils.focusedInput));
 
 type state = {
-  focusedInput: option(ReactDates.focusedInput),
+  focusedInput: option(Utils.focusedInput),
   startDate: option(Moment.t),
   endDate: option(Moment.t),
 };
@@ -37,6 +37,6 @@ let make = _children => {
       focusedInput=?self.state.focusedInput
       onDatesChange=(v => self.send(DatesChange(v.startDate, v.endDate)))
       onFocusChange=(v => self.send(FocusChange(v)))
-      isOutsideRange=((_) => false)
+      isOutsideRange=(_day => false)
     />,
 };

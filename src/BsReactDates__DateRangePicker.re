@@ -1,6 +1,12 @@
-open ReactDates;
+open BsReactDates__Utils;
 
 open MomentRe;
+
+let nullableFocusedInputToJs = v =>
+  v
+  |> Js.toOption
+  |> Js.Option.map((. b) => focusedInputFromJs(b))
+  |> Belt.Option.flatMap(_, x => x);
 
 [@bs.obj]
 external makeProps :
@@ -66,14 +72,14 @@ external makeProps :
     ~renderDayContents: Moment.t => StrOrNode.t=?,
     ~minimumNights: int=?,
     ~enableOutsideDays: bool=?,
-    ~isDayBlocked: day => bool=?,
-    ~isOutsideRange: day => bool=?,
-    ~isDayHighlighted: day => bool=?,
+    ~isDayBlocked: Moment.t => bool=?,
+    ~isOutsideRange: Moment.t => bool=?,
+    ~isDayHighlighted: Moment.t => bool=?,
     /* internationalization props */
     ~displayFormat: DisplayFormat.t=?,
     ~monthFormat: string=?,
     ~weekDayFormat: string=?,
-    ~phrases: DateRangePickerPhrases.t=?,
+    ~phrases: BsReactDates__DateRangePickerPhrases.t=?,
     ~dayAriaLabelFormat: string=?,
     unit
   ) =>
