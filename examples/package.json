@@ -9,7 +9,8 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "bs-moment": "^0.2.4",
+    "bs-moment": "^0.3.0",
+    "moment": "^2.22.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "reason-scripts": "0.8.0"
