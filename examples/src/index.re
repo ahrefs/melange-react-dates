@@ -4,8 +4,8 @@
 
 ReactDOMRe.renderToElementWithId(
   <div>
-    <h2> (ReasonReact.stringToElement("React Dates example")) </h2>
-    <Example1 />
+    <h2> (ReasonReact.string("DateRangePicker example")) </h2>
+    <ExampleDateRangePicker />
   </div>,
   "root",
 );

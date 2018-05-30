@@ -1,7 +1,7 @@
 module Utils = BsReactDates__Utils;
-
-module DateRangePicker = BsReactDates__DateRangePicker;
+module Initialize = BsReactDates__Initialize;
 
 module DateRangePickerPhrases = BsReactDates__DateRangePickerPhrases;
 
-module Initialize = BsReactDates__Initialize;
+module DateRangePicker = BsReactDates__DateRangePicker;
+module DayPickerRangeController = BsReactDates__DayPickerRangeController;

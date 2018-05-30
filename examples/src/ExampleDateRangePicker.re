@@ -12,7 +12,7 @@ type state = {
   endDate: option(Moment.t),
 };
 
-let component = ReasonReact.reducerComponent("Example1");
+let component = ReasonReact.reducerComponent("ExampleDateRangePicker");
 
 let make = _children => {
   ...component,

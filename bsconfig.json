@@ -6,5 +6,10 @@
     "react-jsx": 2
   },
   "bsc-flags": ["-bs-super-errors"],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
   "refmt": 3
 }
