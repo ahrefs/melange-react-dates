@@ -27,6 +27,7 @@ external makeProps :
     ~onOutsideClick: ReactEventRe.Mouse.t => unit=?,
     ~keepOpenOnDateSelect: bool=?,
     ~noBorder: bool=?,
+    ~hideKeyboardShortcutsPanel: bool=?,
     /* navigation related props */
     ~navPrev: ReasonReact.reactElement=?,
     ~navNext: ReasonReact.reactElement=?,
@@ -73,6 +74,7 @@ let make =
       ~onOutsideClick=?,
       ~keepOpenOnDateSelect=?,
       ~noBorder=?,
+      ~hideKeyboardShortcutsPanel=?,
       ~navPrev=?,
       ~navNext=?,
       ~onPrevMonthClick=?,
@@ -114,6 +116,7 @@ let make =
               ~onOutsideClick?,
               ~keepOpenOnDateSelect?,
               ~noBorder?,
+              ~hideKeyboardShortcutsPanel?,
               ~navPrev?,
               ~navNext?,
               ~onPrevMonthClick?,
