@@ -1,8 +1,10 @@
-Example App
+bs-react-dates example app
 
 ## Development
 
 ```sh
-$ npm install
-$ npm start
+$ yarn
+$ yarn start
 ```
+
+Go to `localhost:8080`.
