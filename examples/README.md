@@ -7,4 +7,4 @@ $ yarn
 $ yarn start
 ```
 
-Go to `localhost:8080`.
+Go to `localhost:3000` or whatever port react finds that is available.
