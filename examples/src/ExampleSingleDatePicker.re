@@ -3,10 +3,12 @@ open MomentRe;
 open BsReactDates;
 
 type action =
-  | DateChange(option(Moment.t));
+  | DateChange(Moment.t)
+  | FocusChange;
 
 type state = {
-  startDate: option(Moment.t)
+  date: option(Moment.t),
+  focused: bool
 };
 
 let component = ReasonReact.reducerComponent("ExampleSingleDatePicker");
@@ -14,19 +16,22 @@ let component = ReasonReact.reducerComponent("ExampleSingleDatePicker");
 let make = _children => {
   ...component,
   initialState: () => {
-    startDate: Some(momentNow()),
+    date: Some(momentNow()),
+    focused: false,
   },
   reducer: (action, state) =>
     switch (action) {
-    | DateChange(startDate) =>
-      ReasonReact.Update({...state, startDate})
+    | DateChange(date) =>
+      ReasonReact.Update({date: Some(date), focused: false})
+    | FocusChange =>
+      ReasonReact.Update({...state, focused: true})
     },
   render: self =>
     <SingleDatePicker
-      date=?self.state.startDate
-      id="startDateId"
-      focused=false
-      onDateChange=(v => self.send(DateChange(v.startDate)))
-      onFocusChange=(_v => ())
+      date=?self.state.date
+      id="dateId"
+      focused=self.state.focused
+      onDateChange=(date => self.send(DateChange(date)))
+      onFocusChange=(_v => self.send(FocusChange))
     />,
 };

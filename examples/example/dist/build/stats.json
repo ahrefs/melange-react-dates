@@ -1,0 +1,23 @@
+{
+  "errors": [
+    "Entry module not found: Error: Can't resolve './lib/js/index' in '/home/james/work/bs-react-dates/examples'\nresolve './lib/js/index' in '/home/james/work/bs-react-dates/examples'\n  using description file: /home/james/work/bs-react-dates/examples/package.json (relative path: .)\n    Field 'browser' doesn't contain a valid alias configuration\n  after using description file: /home/james/work/bs-react-dates/examples/package.json (relative path: .)\n    using description file: /home/james/work/bs-react-dates/examples/package.json (relative path: ./lib/js/index)\n      no extension\n        Field 'browser' doesn't contain a valid alias configuration\n        /home/james/work/bs-react-dates/examples/lib/js/index doesn't exist\n      .js\n        Field 'browser' doesn't contain a valid alias configuration\n        /home/james/work/bs-react-dates/examples/lib/js/index.js doesn't exist\n      .json\n        Field 'browser' doesn't contain a valid alias configuration\n        /home/james/work/bs-react-dates/examples/lib/js/index.json doesn't exist\n      as directory\n        /home/james/work/bs-react-dates/examples/lib/js/index doesn't exist"
+  ],
+  "warnings": [],
+  "version": "3.12.0",
+  "hash": "a6fcdb8d05dba17eb187",
+  "publicPath": "/build/",
+  "assetsByChunkName": {},
+  "assets": [
+    {
+      "name": "asset-manifest.json",
+      "size": 2,
+      "chunks": [],
+      "chunkNames": []
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {},
+  "chunks": [],
+  "modules": [],
+  "filteredModules": 0
+}

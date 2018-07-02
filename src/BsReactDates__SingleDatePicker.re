@@ -12,7 +12,7 @@ let nullableFocusedInputToJs = v =>
 [@bs.obj]
 external makeProps :
   (
-    ~onDateChange: Dates.tJs => unit,
+    ~onDateChange: Moment.t => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~focused: bool,
     ~id: string,
@@ -64,7 +64,7 @@ external makeProps :
     ~navNext: ReasonReact.reactElement=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
-    ~onClose: Dates.tJs => unit=?,
+    ~onClose: Moment.t => unit=?,
     ~transitionDuration: int=?, /* todo: not negative */
     /* day presentation and interaction related props */
     ~renderCalendarDay: Moment.t => StrOrNode.t=?,
@@ -146,16 +146,7 @@ let make =
       ~dayAriaLabelFormat=?,
       children,
     ) => {
-  let handleDateChange = v => v |. Dates.fromJs |. onDateChange;
   let handleFocusChange = v => v |. nullableFocusedInputToJs |. onFocusChange;
-  let handleClose =
-    Belt.Option.map(
-      onClose,
-      func => {
-        let res = v => v |. Dates.fromJs |. func;
-        res;
-      },
-    );
   {
     ...singleDatePicker,
     render: _self =>
@@ -164,7 +155,7 @@ let make =
           ~reactClass=singleDatePickerAbs,
           ~props=
             makeProps(
-              ~onDateChange=handleDateChange,
+              ~onDateChange,
               ~onFocusChange=handleFocusChange,
               ~focused,
               ~id,
@@ -204,7 +195,7 @@ let make =
               ~navNext?,
               ~onPrevMonthClick?,
               ~onNextMonthClick?,
-              ~onClose=?handleClose,
+              ~onClose?,
               ~transitionDuration?,
               ~renderCalendarDay?,
               ~renderDayContents?,
