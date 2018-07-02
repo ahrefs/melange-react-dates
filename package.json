@@ -1,6 +1,6 @@
 {
   "name": "@ahrefs/bs-react-dates",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Reason bindings for react-dates",
   "author": "ahrefs",
   "license": "MIT",

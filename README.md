@@ -42,7 +42,7 @@ To include styles
 ## TODO
 
 * [x] [DateRangePicker](https://github.com/airbnb/react-dates#daterangepicker)
-* [ ] [SingleDatePicker](https://github.com/airbnb/react-dates#singledatepicker)
+* [x] [SingleDatePicker](https://github.com/airbnb/react-dates#singledatepicker)
 * [ ] [DayPickerRangeController](https://github.com/airbnb/react-dates#daypickerrangecontroller)
 * [ ] can I/should I make it independable from `bs-moment`?
 
