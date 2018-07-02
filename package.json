@@ -23,6 +23,7 @@
   ],
   "scripts": {
     "prestart": "npm install && bsb -clean-world",
+    "clean": "bsb -clean-world",
     "start": "npm run bs:watch",
     "test": "npm run bs:build",
     "bs:build": "bsb -make-world -clean-world",
