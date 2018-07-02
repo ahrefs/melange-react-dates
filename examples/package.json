@@ -1,5 +1,8 @@
 {
   "name": "@ahrefs/bs-react-dates-examples",
+  "engines": {
+    "node": ">=8.11.2"
+  },
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -13,7 +16,7 @@
     "moment": "^2.22.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "reason-scripts": "0.8.0"
+    "reason-scripts": "^0.9.0"
   },
   "devDependencies": {
     "bs-platform": "^3.1.4",
