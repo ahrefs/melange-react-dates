@@ -4,7 +4,7 @@ open BsReactDates;
 
 type action =
   | DateChange(Moment.t)
-  | FocusChange;
+  | FocusChange(bool);
 
 type state = {
   date: option(Moment.t),
@@ -23,8 +23,8 @@ let make = _children => {
     switch (action) {
     | DateChange(date) =>
       ReasonReact.Update({date: Some(date), focused: false})
-    | FocusChange =>
-      ReasonReact.Update({...state, focused: true})
+    | FocusChange(v) =>
+      ReasonReact.Update({...state, focused: v})
     },
   render: self =>
     <SingleDatePicker
@@ -32,6 +32,8 @@ let make = _children => {
       id="dateId"
       focused=self.state.focused
       onDateChange=(date => self.send(DateChange(date)))
-      onFocusChange=(_v => self.send(FocusChange))
+      onFocusChange=(v => {
+        self.send(FocusChange(v##focused));
+      })
     />,
 };
