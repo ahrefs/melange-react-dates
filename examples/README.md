@@ -3,6 +3,13 @@ bs-react-dates example app
 ## Development
 
 ```sh
+$ npm install
+$ npm start
+```
+
+or
+
+```sh
 $ yarn
 $ yarn start
 ```
