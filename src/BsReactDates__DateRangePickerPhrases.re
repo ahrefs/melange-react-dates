@@ -1,7 +1,7 @@
 type t;
 
 [@bs.obj]
-external make :
+external make:
   (
     ~closeDatePicker: string,
     ~clearDates: string,

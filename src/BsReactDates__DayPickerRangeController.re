@@ -1,16 +1,8 @@
 open BsReactDates__Utils;
-
 open MomentRe;
 
-let nullableFocusedInputToJs = v =>
-  v
-  |. Js.toOption
-  |. Belt.Option.map(focusedInputFromJs)
-  /* upwrap option(option(..)) */
-  |. Belt.Option.flatMap(x => x);
-
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
@@ -52,7 +44,7 @@ external makeProps :
   "";
 
 [@bs.module "react-dates"]
-external dayPickerRangeControllerAbs : ReasonReact.reactClass =
+external dayPickerRangeControllerAbs: ReasonReact.reactClass =
   "DayPickerRangeController";
 
 let dayPickerRangeController =
@@ -92,8 +84,8 @@ let make =
       ~dayAriaLabelFormat=?,
       children,
     ) => {
-  let handleDatesChange = v => v |. Dates.fromJs |. onDatesChange;
-  let handleFocusChange = v => v |. nullableFocusedInputToJs |. onFocusChange;
+  let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
+  let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
   {
     ...dayPickerRangeController,
     render: _self =>

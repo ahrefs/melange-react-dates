@@ -1,16 +1,9 @@
 open BsReactDates__Utils;
-
+open Belt;
 open MomentRe;
 
-let nullableFocusedInputToJs = v =>
-  v
-  |. Js.toOption
-  |. Belt.Option.map(focusedInputFromJs)
-  /* upwrap option(option(..)) */
-  |. Belt.Option.flatMap(x => x);
-
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
@@ -88,7 +81,7 @@ external makeProps :
   "";
 
 [@bs.module "react-dates"]
-external dateRangePickerAbs : ReasonReact.reactClass = "DateRangePicker";
+external dateRangePickerAbs: ReasonReact.reactClass = "DateRangePicker";
 
 let dateRangePicker = ReasonReact.statelessComponent("DateRangePicker");
 
@@ -152,13 +145,13 @@ let make =
       ~dayAriaLabelFormat=?,
       children,
     ) => {
-  let handleDatesChange = v => v |. Dates.fromJs |. onDatesChange;
-  let handleFocusChange = v => v |. nullableFocusedInputToJs |. onFocusChange;
+  let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
+  let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
   let handleClose =
-    Belt.Option.map(
+    Option.map(
       onClose,
       func => {
-        let res = v => v |. Dates.fromJs |. func;
+        let res = v => v->Dates.fromJs->func;
         res;
       },
     );
@@ -221,7 +214,7 @@ let make =
               ~isDayBlocked?,
               ~isOutsideRange?,
               ~isDayHighlighted?,
-              ~displayFormat=?displayFormat |. DisplayFormat.encodeOpt,
+              ~displayFormat=?displayFormat->DisplayFormat.encodeOpt,
               ~monthFormat?,
               ~weekDayFormat?,
               ~phrases?,

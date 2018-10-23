@@ -1,16 +1,8 @@
 open BsReactDates__Utils;
-
 open MomentRe;
 
-let nullableFocusedInputToJs = v =>
-  v
-  |. Js.toOption
-  |. Belt.Option.map(focusedInputFromJs)
-  /* upwrap option(option(..)) */
-  |. Belt.Option.flatMap(x => x);
-
 [@bs.obj]
-external makeProps :
+external makeProps:
   (
     ~onDateChange: Moment.t => unit,
     ~onFocusChange: {. "focused": bool} => unit,
@@ -85,7 +77,7 @@ external makeProps :
   "";
 
 [@bs.module "react-dates"]
-external singleDatePickerAbs : ReasonReact.reactClass = "SingleDatePicker";
+external singleDatePickerAbs: ReasonReact.reactClass = "SingleDatePicker";
 
 let singleDatePicker = ReasonReact.statelessComponent("SingleDatePicker");
 
@@ -147,7 +139,7 @@ let make =
       children,
     ) => {
   ...singleDatePicker,
-  render: _self => {
+  render: _self =>
     ReasonReact.element(
       ReasonReact.wrapJsForReason(
         ~reactClass=singleDatePickerAbs,
@@ -201,7 +193,7 @@ let make =
             ~isDayBlocked?,
             ~isOutsideRange?,
             ~isDayHighlighted?,
-            ~displayFormat=?displayFormat |. DisplayFormat.encodeOpt,
+            ~displayFormat=?displayFormat->DisplayFormat.encodeOpt,
             ~monthFormat?,
             ~weekDayFormat?,
             ~phrases?,
@@ -210,5 +202,5 @@ let make =
           ),
         children,
       ),
-    )},
+    ),
 };
