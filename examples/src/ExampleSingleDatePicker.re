@@ -32,8 +32,8 @@ let make = _children => {
       id="dateId"
       focused=self.state.focused
       onDateChange=(date => self.send(DateChange(date)))
-      onFocusChange=(v => {
-        self.send(FocusChange(v##focused));
+      onFocusChange=(focused => {
+        self.send(FocusChange(focused));
       })
     />,
 };

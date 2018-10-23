@@ -147,14 +147,14 @@ let make =
       children,
     ) => {
   ...singleDatePicker,
-  render: _self =>
+  render: _self => {
     ReasonReact.element(
       ReasonReact.wrapJsForReason(
         ~reactClass=singleDatePickerAbs,
         ~props=
           makeProps(
             ~onDateChange,
-            ~onFocusChange,
+            ~onFocusChange=isFocussed => onFocusChange(isFocussed##focused),
             ~focused,
             ~id,
             ~date?,
@@ -210,5 +210,5 @@ let make =
           ),
         children,
       ),
-    ),
+    )},
 };
