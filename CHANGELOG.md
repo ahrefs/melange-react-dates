@@ -1,7 +1,12 @@
-## 0.0.10 -- 2018-07-02
+## 0.0.12 -- 2018-10-23
 
-* Add SingleDatePicker.
+- bump bs-platform@4.0.4
+- refmt
+
+## 0.0.11 -- 2018-10-23
+
+- Add SingleDatePicker.
 
 ## 0.0.1 -- 2018-04-19
 
-* First release
+- First release
