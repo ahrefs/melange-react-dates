@@ -1,4 +1,4 @@
-Example App
+bs-react-dates example app
 
 ## Development
 
@@ -6,3 +6,12 @@ Example App
 $ npm install
 $ npm start
 ```
+
+or
+
+```sh
+$ yarn
+$ yarn start
+```
+
+Go to `localhost:3000` or whatever port react finds that is available.
