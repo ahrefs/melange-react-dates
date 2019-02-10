@@ -35,3 +35,5 @@ examples/yarn.lock
 # other
 NOTES.md
 TODO.md
+
+/src/*.bs.js

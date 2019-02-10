@@ -16,7 +16,7 @@ external makeProps:
     ~withPortal: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
     ~renderCalendarInfo: unit => StrOrNode.t=?,
-    ~onOutsideClick: ReactEventRe.Mouse.t => unit=?,
+    ~onOutsideClick: ReactEvent.Mouse.t => unit=?,
     ~keepOpenOnDateSelect: bool=?,
     ~noBorder: bool=?,
     ~hideKeyboardShortcutsPanel: bool=?,

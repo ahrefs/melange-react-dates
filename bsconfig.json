@@ -1,15 +1,23 @@
 {
   "name": "@ahrefs/bs-react-dates",
-  "sources": ["src"],
-  "bs-dependencies": ["reason-react", "bs-moment"],
+  "sources": {
+    "dir": "src",
+    "subdirs": true
+  },
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": false,
   "reason": {
     "react-jsx": 2
   },
-  "bsc-flags": ["-bs-super-errors"],
-  "package-specs": {
-    "module": "es6",
-    "in-source": true
-  },
-  "suffix": ".bs.js",
-  "refmt": 3
+  "refmt": 3,
+  "bs-dependencies": [
+    "bs-moment",
+    "reason-react"
+  ]
 }

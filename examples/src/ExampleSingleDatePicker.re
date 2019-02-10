@@ -8,32 +8,26 @@ type action =
 
 type state = {
   date: option(Moment.t),
-  focused: bool
+  focused: bool,
 };
 
 let component = ReasonReact.reducerComponent("ExampleSingleDatePicker");
 
 let make = _children => {
   ...component,
-  initialState: () => {
-    date: Some(momentNow()),
-    focused: false,
-  },
+  initialState: () => {date: Some(momentNow()), focused: false},
   reducer: (action, state) =>
     switch (action) {
     | DateChange(date) =>
       ReasonReact.Update({date: Some(date), focused: false})
-    | FocusChange(v) =>
-      ReasonReact.Update({...state, focused: v})
+    | FocusChange(v) => ReasonReact.Update({...state, focused: v})
     },
   render: self =>
     <SingleDatePicker
-      date=?self.state.date
+      date=?{self.state.date}
       id="dateId"
-      focused=self.state.focused
-      onDateChange=(date => self.send(DateChange(date)))
-      onFocusChange=(focused => {
-        self.send(FocusChange(focused));
-      })
+      focused={self.state.focused}
+      onDateChange={date => self.send(DateChange(date))}
+      onFocusChange={focused => self.send(FocusChange(focused))}
     />,
 };

@@ -30,13 +30,13 @@ let make = _children => {
     },
   render: self =>
     <DateRangePicker
-      startDate=?self.state.startDate
+      startDate=?{self.state.startDate}
       startDateId="startDateId"
-      endDate=?self.state.endDate
+      endDate=?{self.state.endDate}
       endDateId="endDateId"
-      focusedInput=?self.state.focusedInput
-      onDatesChange=(v => self.send(DatesChange(v.startDate, v.endDate)))
-      onFocusChange=(v => self.send(FocusChange(v)))
-      isOutsideRange=(_day => false)
+      focusedInput=?{self.state.focusedInput}
+      onDatesChange={v => self.send(DatesChange(v.startDate, v.endDate))}
+      onFocusChange={v => self.send(FocusChange(v))}
+      isOutsideRange={_day => false}
     />,
 };
