@@ -1,33 +1,20 @@
 open MomentRe;
-
 open BsReactDates;
 
-type action =
-  | DateChange(Moment.t)
-  | FocusChange(bool);
+[@react.component]
+let make = () => {
+  /* State variables:
+    - date: option(Moment.t)
+    - focused: bool
+  */
+  let (date, setDate) = React.useState(() => Some(momentNow()));
+  let (focused, setFocused) = React.useState(() => false);
 
-type state = {
-  date: option(Moment.t),
-  focused: bool,
-};
-
-let component = ReasonReact.reducerComponent("ExampleSingleDatePicker");
-
-let make = _children => {
-  ...component,
-  initialState: () => {date: Some(momentNow()), focused: false},
-  reducer: (action, state) =>
-    switch (action) {
-    | DateChange(date) =>
-      ReasonReact.Update({date: Some(date), focused: false})
-    | FocusChange(v) => ReasonReact.Update({...state, focused: v})
-    },
-  render: self =>
-    <SingleDatePicker
-      date=?{self.state.date}
+  <SingleDatePicker
+      date=?{date}
       id="dateId"
-      focused={self.state.focused}
-      onDateChange={date => self.send(DateChange(date))}
-      onFocusChange={focused => self.send(FocusChange(focused))}
-    />,
-};
+      focused
+      onDateChange=(d => setDate(_ => Some(d)))
+      onFocusChange={f => setFocused(_ => f##focused)}
+  />
+}

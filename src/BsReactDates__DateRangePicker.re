@@ -1,9 +1,10 @@
 open BsReactDates__Utils;
-open Belt;
 open MomentRe;
+let handleDatesChange = v => v->Dates.fromJs;
+let handleFocusChange = v => v->nullableFocusedInputToJs;
 
-[@bs.obj]
-external makeProps:
+[@bs.module "react-dates"][@react.component]
+external make:
   (
     ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
@@ -12,7 +13,6 @@ external makeProps:
     ~endDate: Moment.t=?,
     ~endDateId: string=?,
     ~focusedInput: [@bs.string] [ | `startDate | `endDate]=?,
-    /* input related props */
     ~startDatePlaceholderText: string=?,
     ~endDatePlaceholderText: string=?,
     ~disabled: [@bs.string] [ | `startDate | `endDate]=?,
@@ -29,7 +29,6 @@ external makeProps:
     ~block: bool=?,
     ~small: bool=?,
     ~regular: bool=?,
-    /* calendar presentation and interaction related props */
     ~renderMonth: Moment.t => StrOrNode.t=?,
     ~orientation: [@bs.string] [ | `horizontal | `vertical]=?,
     ~anchorDirection: [@bs.string] [ | `left | `right]=?,
@@ -54,14 +53,12 @@ external makeProps:
     ~reopenPickerOnClearDates: bool=?,
     ~renderCalendarInfo: unit => StrOrNode.t=?,
     ~hideKeyboardShortcutsPanel: bool=?,
-    /* navigation related props */
     ~navPrev: ReasonReact.reactElement=?,
     ~navNext: ReasonReact.reactElement=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
     ~onClose: Dates.tJs => unit=?,
     ~transitionDuration: int=?, /* todo: not negative */
-    /* day presentation and interaction related props */
     ~renderCalendarDay: Moment.t => StrOrNode.t=?,
     ~renderDayContents: Moment.t => StrOrNode.t=?,
     ~minimumNights: int=?,
@@ -69,7 +66,6 @@ external makeProps:
     ~isDayBlocked: Moment.t => bool=?,
     ~isOutsideRange: Moment.t => bool=?,
     ~isDayHighlighted: Moment.t => bool=?,
-    /* internationalization props */
     ~displayFormat: DisplayFormat.t=?,
     ~monthFormat: string=?,
     ~weekDayFormat: string=?,
@@ -77,152 +73,5 @@ external makeProps:
     ~dayAriaLabelFormat: string=?,
     unit
   ) =>
-  _ =
-  "";
-
-[@bs.module "react-dates"]
-external dateRangePickerAbs: ReasonReact.reactClass = "DateRangePicker";
-
-let dateRangePicker = ReasonReact.statelessComponent("DateRangePicker");
-
-let make =
-    (
-      ~onDatesChange,
-      ~onFocusChange,
-      ~startDate=?,
-      ~startDateId=?,
-      ~endDate=?,
-      ~endDateId=?,
-      ~focusedInput=?,
-      ~startDatePlaceholderText=?,
-      ~endDatePlaceholderText=?,
-      ~disabled=?,
-      ~required=?,
-      ~readOnly=?,
-      ~screenReaderInputMessage=?,
-      ~showClearDates=?,
-      ~showDefaultInputIcon=?,
-      ~customInputIcon=?,
-      ~customArrowIcon=?,
-      ~customCloseIcon=?,
-      ~inputIconPosition=?,
-      ~noBorder=?,
-      ~block=?,
-      ~small=?,
-      ~regular=?,
-      ~renderMonth=?,
-      ~orientation=?,
-      ~anchorDirection=?,
-      ~horizontalMargin=?,
-      ~withPortal=?,
-      ~withFullScreenPortal=?,
-      ~daySize=?,
-      ~isRTL=?,
-      ~initialVisibleMonth=?,
-      ~firstDayOfWeek=?,
-      ~numberOfMonths=?,
-      ~keepOpenOnDateSelect=?,
-      ~reopenPickerOnClearDates=?,
-      ~renderCalendarInfo=?,
-      ~hideKeyboardShortcutsPanel=?,
-      ~navPrev=?,
-      ~navNext=?,
-      ~onPrevMonthClick=?,
-      ~onNextMonthClick=?,
-      ~onClose=?,
-      ~transitionDuration=?,
-      ~renderCalendarDay=?,
-      ~renderDayContents=?,
-      ~minimumNights=?,
-      ~enableOutsideDays=?,
-      ~isDayBlocked=?,
-      ~isOutsideRange=?,
-      ~isDayHighlighted=?,
-      ~displayFormat=?,
-      ~monthFormat=?,
-      ~weekDayFormat=?,
-      ~phrases=?,
-      ~dayAriaLabelFormat=?,
-      children,
-    ) => {
-  let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
-  let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
-  let handleClose =
-    Option.map(
-      onClose,
-      func => {
-        let res = v => v->Dates.fromJs->func;
-        res;
-      },
-    );
-  {
-    ...dateRangePicker,
-    render: _self =>
-      ReasonReact.element(
-        ReasonReact.wrapJsForReason(
-          ~reactClass=dateRangePickerAbs,
-          ~props=
-            makeProps(
-              ~onDatesChange=handleDatesChange,
-              ~onFocusChange=handleFocusChange,
-              ~startDate?,
-              ~startDateId?,
-              ~endDate?,
-              ~endDateId?,
-              ~focusedInput?,
-              ~startDatePlaceholderText?,
-              ~endDatePlaceholderText?,
-              ~disabled?,
-              ~required?,
-              ~readOnly?,
-              ~screenReaderInputMessage?,
-              ~showClearDates?,
-              ~showDefaultInputIcon?,
-              ~customInputIcon?,
-              ~customArrowIcon?,
-              ~customCloseIcon?,
-              ~inputIconPosition?,
-              ~noBorder?,
-              ~block?,
-              ~small?,
-              ~regular?,
-              ~renderMonth?,
-              ~orientation?,
-              ~anchorDirection?,
-              ~horizontalMargin?,
-              ~withPortal?,
-              ~withFullScreenPortal?,
-              ~daySize?,
-              ~isRTL?,
-              ~initialVisibleMonth?,
-              ~firstDayOfWeek?,
-              ~numberOfMonths?,
-              ~keepOpenOnDateSelect?,
-              ~reopenPickerOnClearDates?,
-              ~renderCalendarInfo?,
-              ~hideKeyboardShortcutsPanel?,
-              ~navPrev?,
-              ~navNext?,
-              ~onPrevMonthClick?,
-              ~onNextMonthClick?,
-              ~onClose=?handleClose,
-              ~transitionDuration?,
-              ~renderCalendarDay?,
-              ~renderDayContents?,
-              ~minimumNights?,
-              ~enableOutsideDays?,
-              ~isDayBlocked?,
-              ~isOutsideRange?,
-              ~isDayHighlighted?,
-              ~displayFormat=?displayFormat->DisplayFormat.encodeOpt,
-              ~monthFormat?,
-              ~weekDayFormat?,
-              ~phrases?,
-              ~dayAriaLabelFormat?,
-              (),
-            ),
-          children,
-        ),
-      ),
-  };
-};
+  React.element =
+  "DateRangePicker";

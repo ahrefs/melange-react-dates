@@ -2,41 +2,29 @@ open MomentRe;
 
 open BsReactDates;
 
-type action =
-  | DatesChange(option(Moment.t), option(Moment.t))
-  | FocusChange(option(Utils.focusedInput));
+[@react.component]
+let make = () => {
+  /* State variables:
+    - focusedInput: option(Utils.focusedInput),
+    - startDate: option(Moment.t),
+    - endDate: option(Moment.t),
+  */
+  let (focusedInput, setFocusedInput) = React.useState(() => None);
+  let (startDate, setStartDate) = React.useState(() => Some(momentNow()));
+  let (endDate, setEndDate) = React.useState(() => Some(Moment.add(~duration=duration(5, `days), momentNow())));
 
-type state = {
-  focusedInput: option(Utils.focusedInput),
-  startDate: option(Moment.t),
-  endDate: option(Moment.t),
-};
-
-let component = ReasonReact.reducerComponent("ExampleDateRangePicker");
-
-let make = _children => {
-  ...component,
-  initialState: () => {
-    focusedInput: None,
-    startDate: Some(momentNow()),
-    endDate: Some(Moment.add(~duration=duration(5, `days), momentNow())),
-  },
-  reducer: (action, state) =>
-    switch (action) {
-    | DatesChange(startDate, endDate) =>
-      ReasonReact.Update({...state, startDate, endDate})
-    | FocusChange(focusedInput) =>
-      ReasonReact.Update({...state, focusedInput})
-    },
-  render: self =>
-    <DateRangePicker
-      startDate=?{self.state.startDate}
-      startDateId="startDateId"
-      endDate=?{self.state.endDate}
-      endDateId="endDateId"
-      focusedInput=?{self.state.focusedInput}
-      onDatesChange={v => self.send(DatesChange(v.startDate, v.endDate))}
-      onFocusChange={v => self.send(FocusChange(v))}
-      isOutsideRange={_day => false}
-    />,
-};
+  <DateRangePicker
+    startDate=?{startDate}
+    startDateId="startDateId"
+    endDate=?{endDate}
+    endDateId="endDateId"
+    focusedInput=?{focusedInput}
+    onDatesChange={v => {
+      let d = DateRangePicker.handleDatesChange(v);
+      setStartDate(_ => d.startDate);
+      setEndDate(_ => d.endDate);
+    }}
+    onFocusChange={v => setFocusedInput(_ => DateRangePicker.handleFocusChange(v))}
+    isOutsideRange={_ => false}
+  />
+}

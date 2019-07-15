@@ -1,6 +1,6 @@
 [%bs.raw {|require('./index.css')|}];
-
 [%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
+BsReactDates.Initialize.initialize;
 
 ReactDOMRe.renderToElementWithId(
   <div>

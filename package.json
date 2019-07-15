@@ -33,10 +33,11 @@
     "bs-moment": "^0.3.0",
     "moment": "^2.22.1",
     "react": "^16.2.0",
-    "react-dates": "^16.5.0"
+    "react-dates": "^20.2.5",
+    "upgrade-reason-react": "git+https://github.com/chenglou/upgrade-reason-react.git#0.6.0-to-0.7.0"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.18",
-    "reason-react": "^0.5.3"
+    "bs-platform": "^5.0.6",
+    "reason-react": "^0.7.0"
   }
 }

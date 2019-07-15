@@ -18,14 +18,14 @@
   "license": "MIT",
   "dependencies": {
     "@ahrefs/bs-react-dates": "file:../",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "reason-react": "^0.5.3",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "reason-react": "^0.7.0",
     "bs-moment": "^0.3.0",
     "moment": "^2.22.1"
   },
   "devDependencies": {
-    "bs-platform": "^4.0.18",
+    "bs-platform": "^5.0.6",
     "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
