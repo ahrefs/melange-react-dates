@@ -4,6 +4,7 @@ open MomentRe;
 [@bs.obj]
 external makeProps:
   (
+    ~className: string=?,
     ~onDateChange: Moment.t => unit,
     ~onFocusChange: {. "focused": bool} => unit,
     ~focused: bool,
@@ -83,6 +84,7 @@ let singleDatePicker = ReasonReact.statelessComponent("SingleDatePicker");
 
 let make =
     (
+      ~className=?,
       ~date=?,
       ~onDateChange,
       ~onFocusChange,
@@ -145,6 +147,7 @@ let make =
         ~reactClass=singleDatePickerAbs,
         ~props=
           makeProps(
+            ~className?,
             ~onDateChange,
             ~onFocusChange=isFocussed => onFocusChange(isFocussed##focused),
             ~focused,

@@ -5,6 +5,7 @@ open MomentRe;
 [@bs.obj]
 external makeProps:
   (
+    ~className: string=?,
     ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Moment.t=?,
@@ -87,6 +88,7 @@ let dateRangePicker = ReasonReact.statelessComponent("DateRangePicker");
 
 let make =
     (
+      ~className=?,
       ~onDatesChange,
       ~onFocusChange,
       ~startDate=?,
@@ -163,6 +165,7 @@ let make =
           ~reactClass=dateRangePickerAbs,
           ~props=
             makeProps(
+              ~className?,
               ~onDatesChange=handleDatesChange,
               ~onFocusChange=handleFocusChange,
               ~startDate?,

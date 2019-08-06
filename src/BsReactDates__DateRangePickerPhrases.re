@@ -1,8 +1,9 @@
 type t;
 
 [@bs.obj]
-external make:
+external make :
   (
+    ~className: string=?,
     ~closeDatePicker: string,
     ~clearDates: string,
     ~focusStartDate: string,
