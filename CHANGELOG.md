@@ -1,3 +1,7 @@
+## 0.0.14 (2019-08-06)
+
+- add `daySize` and `className` to `dayPickerRangeController`
+
 ## 0.0.13 (2019-03-10)
 
 - upgrade deps
