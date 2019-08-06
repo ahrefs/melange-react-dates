@@ -4,6 +4,7 @@ open MomentRe;
 [@bs.obj]
 external makeProps:
   (
+    ~className: string=?,
     ~onDatesChange: Dates.tJs => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Moment.t=?,
@@ -20,6 +21,7 @@ external makeProps:
     ~keepOpenOnDateSelect: bool=?,
     ~noBorder: bool=?,
     ~hideKeyboardShortcutsPanel: bool=?,
+    ~daySize: int=?,
     /* navigation related props */
     ~navPrev: ReasonReact.reactElement=?,
     ~navNext: ReasonReact.reactElement=?,
@@ -52,6 +54,7 @@ let dayPickerRangeController =
 
 let make =
     (
+      ~className=?,
       ~onDatesChange,
       ~onFocusChange,
       ~startDate=?,
@@ -67,6 +70,7 @@ let make =
       ~keepOpenOnDateSelect=?,
       ~noBorder=?,
       ~hideKeyboardShortcutsPanel=?,
+      ~daySize=?,
       ~navPrev=?,
       ~navNext=?,
       ~onPrevMonthClick=?,
@@ -94,6 +98,7 @@ let make =
           ~reactClass=dayPickerRangeControllerAbs,
           ~props=
             makeProps(
+              ~className?,
               ~onDatesChange=handleDatesChange,
               ~onFocusChange=handleFocusChange,
               ~startDate?,
@@ -109,6 +114,7 @@ let make =
               ~keepOpenOnDateSelect?,
               ~noBorder?,
               ~hideKeyboardShortcutsPanel?,
+              ~daySize?,
               ~navPrev?,
               ~navNext?,
               ~onPrevMonthClick?,
