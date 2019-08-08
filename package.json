@@ -30,7 +30,7 @@
     "bs:setup": "bsb -make-world"
   },
   "dependencies": {
-    "bs-moment": "^0.3.0",
+    "bs-moment": "^0.4.4",
     "moment": "^2.22.1",
     "react": "^16.2.0",
     "react-dates": "^16.5.0"
