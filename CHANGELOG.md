@@ -1,3 +1,7 @@
+## 0.0.15 (2019-08-08)
+
+- upgrade `bs-momemt@^0.4.4`
+
 ## 0.0.14 (2019-08-06)
 
 - add `daySize` and `className` to `dayPickerRangeController`
