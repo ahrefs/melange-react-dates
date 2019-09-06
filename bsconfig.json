@@ -1,5 +1,5 @@
 {
-  "name": "@ahrefs/bs-react-dates",
+  "name": "@rolltrax/bs-react-dates",
   "sources": {
     "dir": "src",
     "subdirs": true

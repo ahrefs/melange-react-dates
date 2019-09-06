@@ -1,5 +1,5 @@
 {
-  "name": "@ahrefs/bs-react-dates-examples",
+  "name": "@rolltrax/bs-react-dates-examples",
   "sources": {
     "dir": "src",
     "subdirs": true
@@ -19,6 +19,6 @@
   "bs-dependencies": [
     "reason-react",
     "bs-moment",
-    "@ahrefs/bs-react-dates"
+    "@rolltrax/bs-react-dates"
   ]
 }

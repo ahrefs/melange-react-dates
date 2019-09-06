@@ -1,5 +1,5 @@
 {
-  "name": "@ahrefs/bs-react-dates-examples",
+  "name": "@rolltrax/bs-react-dates-examples",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -17,7 +17,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@ahrefs/bs-react-dates": "file:../",
+    "@rolltrax/bs-react-dates": "file:../",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "reason-react": "^0.7.0",
