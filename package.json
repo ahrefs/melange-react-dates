@@ -1,6 +1,6 @@
 {
   "name": "@rolltrax/bs-react-dates",
-  "version": "0.0.13",
+  "version": "1.0.0",
   "description": "Reason bindings for react-dates",
   "author": "Rolltrax",
   "license": "MIT",
