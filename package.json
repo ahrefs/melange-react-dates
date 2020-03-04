@@ -25,6 +25,7 @@
     "prestart": "npm install && bsb -clean-world",
     "start": "npm run bs:watch",
     "test": "npm run bs:build",
+    "build": "bsb -clean-world -make-world",
     "bs:build": "bsb -make-world -clean-world",
     "bs:watch": "bsb -make-world -clean-world -w",
     "bs:setup": "bsb -make-world"
@@ -32,11 +33,11 @@
   "dependencies": {
     "bs-moment": "^0.4.4",
     "moment": "^2.24.0",
-    "react": "^16.2.0",
+    "react": "^16.12.0",
     "react-dates": "^16.5.0"
   },
   "devDependencies": {
-    "bs-platform": "^7.0.1",
+    "bs-platform": "^6.2.0",
     "reason-react": "^0.7.0"
   }
 }
