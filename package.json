@@ -1,16 +1,16 @@
 {
-  "name": "@bste/bs-react-dates",
+  "name": "@ahrefs/bs-react-dates",
   "version": "0.1.0",
   "description": "Reason bindings for react-dates",
-  "author": "benjstephenson",
+  "author": "ahrefs",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/benjstephenson/bs-react-dates.git"
+    "url": "git+https://github.com/ahrefs/bs-react-dates.git"
   },
-  "homepage": "https://github.com/benjstephenson/bs-react-dates#readme",
+  "homepage": "https://github.com/ahrefs/bs-react-dates#readme",
   "bugs": {
-    "url": "https://github.com/benjstephenson/bs-react-dates/issues"
+    "url": "https://github.com/ahrefs/bs-react-dates/issues"
   },
   "keywords": [
     "react",
@@ -25,7 +25,6 @@
     "prestart": "npm install && bsb -clean-world",
     "start": "npm run bs:watch",
     "test": "npm run bs:build",
-    "build": "bsb -clean-world -make-world",
     "bs:build": "bsb -make-world -clean-world",
     "bs:watch": "bsb -make-world -clean-world -w",
     "bs:setup": "bsb -make-world"
