@@ -1,8 +1,8 @@
 open BsReactDates__Utils;
 open MomentRe;
 
-[@bs.obj]
-external makeProps:
+[@bs.module "react-dates"] [@react.component]
+external make:
   (
     ~className: string=?,
     ~onDatesChange: Dates.tJs => unit,
@@ -42,98 +42,88 @@ external makeProps:
     ~dayAriaLabelFormat: string=?,
     unit
   ) =>
-  _ =
-  "";
-
-[@bs.module "react-dates"]
-external dayPickerRangeControllerAbs: ReasonReact.reactClass =
+  React.element =
   "DayPickerRangeController";
 
-let dayPickerRangeController =
-  ReasonReact.statelessComponent("DayPickerRangeController");
+module Jsx2 = {
+  let component = ReasonReact.statelessComponent(__MODULE__);
 
-let make =
-    (
-      ~className=?,
-      ~onDatesChange,
-      ~onFocusChange,
-      ~startDate=?,
-      ~endDate=?,
-      ~focusedInput=?,
-      ~enableOutsideDays=?,
-      ~numberOfMonths=?,
-      ~orientation=?,
-      ~withPortal=?,
-      ~initialVisibleMonth=?,
-      ~renderCalendarInfo=?,
-      ~onOutsideClick=?,
-      ~keepOpenOnDateSelect=?,
-      ~noBorder=?,
-      ~hideKeyboardShortcutsPanel=?,
-      ~daySize=?,
-      ~navPrev=?,
-      ~navNext=?,
-      ~onPrevMonthClick=?,
-      ~onNextMonthClick=?,
-      ~transitionDuration=?,
-      ~renderCalendarDay=?,
-      ~renderDayContents=?,
-      ~minimumNights=?,
-      ~isOutsideRange=?,
-      ~isDayBlocked=?,
-      ~isDayHighlighted=?,
-      ~monthFormat=?,
-      ~weekDayFormat=?,
-      ~phrases=?,
-      ~dayAriaLabelFormat=?,
-      children,
-    ) => {
-  let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
-  let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
-  {
-    ...dayPickerRangeController,
-    render: _self =>
-      ReasonReact.element(
-        ReasonReact.wrapJsForReason(
-          ~reactClass=dayPickerRangeControllerAbs,
-          ~props=
-            makeProps(
-              ~className?,
-              ~onDatesChange=handleDatesChange,
-              ~onFocusChange=handleFocusChange,
-              ~startDate?,
-              ~endDate?,
-              ~focusedInput?,
-              ~enableOutsideDays?,
-              ~numberOfMonths?,
-              ~orientation?,
-              ~withPortal?,
-              ~initialVisibleMonth?,
-              ~renderCalendarInfo?,
-              ~onOutsideClick?,
-              ~keepOpenOnDateSelect?,
-              ~noBorder?,
-              ~hideKeyboardShortcutsPanel?,
-              ~daySize?,
-              ~navPrev?,
-              ~navNext?,
-              ~onPrevMonthClick?,
-              ~onNextMonthClick?,
-              ~transitionDuration?,
-              ~renderCalendarDay?,
-              ~renderDayContents?,
-              ~minimumNights?,
-              ~isOutsideRange?,
-              ~isDayBlocked?,
-              ~isDayHighlighted?,
-              ~monthFormat?,
-              ~weekDayFormat?,
-              ~phrases?,
-              ~dayAriaLabelFormat?,
-              (),
-            ),
-          children,
-        ),
+  let make =
+      (
+        ~className=?,
+        ~onDatesChange,
+        ~onFocusChange,
+        ~startDate=?,
+        ~endDate=?,
+        ~focusedInput=?,
+        ~enableOutsideDays=?,
+        ~numberOfMonths=?,
+        ~orientation=?,
+        ~withPortal=?,
+        ~initialVisibleMonth=?,
+        ~renderCalendarInfo=?,
+        ~onOutsideClick=?,
+        ~keepOpenOnDateSelect=?,
+        ~noBorder=?,
+        ~hideKeyboardShortcutsPanel=?,
+        ~daySize=?,
+        ~navPrev=?,
+        ~navNext=?,
+        ~onPrevMonthClick=?,
+        ~onNextMonthClick=?,
+        ~transitionDuration=?,
+        ~renderCalendarDay=?,
+        ~renderDayContents=?,
+        ~minimumNights=?,
+        ~isOutsideRange=?,
+        ~isDayBlocked=?,
+        ~isDayHighlighted=?,
+        ~monthFormat=?,
+        ~weekDayFormat=?,
+        ~phrases=?,
+        ~dayAriaLabelFormat=?,
+        children,
+      ) => {
+    let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
+    let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
+    ReasonReactCompat.wrapReactForReasonReact(
+      make,
+      makeProps(
+        ~className?,
+        ~onDatesChange=handleDatesChange,
+        ~onFocusChange=handleFocusChange,
+        ~startDate?,
+        ~endDate?,
+        ~focusedInput?,
+        ~enableOutsideDays?,
+        ~numberOfMonths?,
+        ~orientation?,
+        ~withPortal?,
+        ~initialVisibleMonth?,
+        ~renderCalendarInfo?,
+        ~onOutsideClick?,
+        ~keepOpenOnDateSelect?,
+        ~noBorder?,
+        ~hideKeyboardShortcutsPanel?,
+        ~daySize?,
+        ~navPrev?,
+        ~navNext?,
+        ~onPrevMonthClick?,
+        ~onNextMonthClick?,
+        ~transitionDuration?,
+        ~renderCalendarDay?,
+        ~renderDayContents?,
+        ~minimumNights?,
+        ~isOutsideRange?,
+        ~isDayBlocked?,
+        ~isDayHighlighted?,
+        ~monthFormat?,
+        ~weekDayFormat?,
+        ~phrases?,
+        ~dayAriaLabelFormat?,
+        (),
       ),
+      React.array(children),
+    );
   };
 };
