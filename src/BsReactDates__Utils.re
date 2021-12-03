@@ -6,12 +6,6 @@ module Moment = MomentRe.Moment;
 let _ = BsReactDates__Initialize.initialize;
 
 /* Utils */
-let fromOpt = Js.Nullable.fromOption;
-
-let toOpt = Js.Nullable.toOption;
-
-let optMap = Js.Nullable.toOption;
-
 [@bs.deriving jsConverter]
 type focusedInput = [ | `startDate | `endDate];
 
