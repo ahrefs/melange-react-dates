@@ -12,6 +12,7 @@ external make:
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Js.Nullable.t(Moment.t)=?,
     ~endDate: Js.Nullable.t(Moment.t)=?,
+    ~focusedInput: [ | `startDate | `endDate]=?,
     // calendar presentation and interaction related props
     ~enableOutsideDays: bool=?,
     ~numberOfMonths: int=?,
