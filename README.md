@@ -43,7 +43,24 @@ To include styles
 ## Examples
 
 ```js
+[%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
 
+[@react.component]
+let make = () => {
+  let (dates, setDates) = React.useState(_ => DateRangePicker.Dates.{startDate: None, endDate: None});
+  let (focusedInput, setFocusedInput) = React.useState(_ => None);
+
+  <DateRangePicker
+    startDate=?{dates.startDate}
+    startDateId="startDateId"
+    endDate=?{dates.endDate}
+    endDateId="endDateId"
+    ?focusedInput
+    onDatesChange={v => setDates(_ => v)}
+    onFocusChange={v => setFocusedInput(_ => v)}
+    isOutsideRange={_day => false}
+  />;
+};
 ```
 
 ## TODO

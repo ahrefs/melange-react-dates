@@ -7,7 +7,7 @@ module Moment = MomentRe.Moment;
 external make:
   (
     ~className: string=?,
-    ~onDatesChange: Dates.tJs => unit,
+    ~onDatesChange: dates => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Moment.t=?,
     ~startDateId: string=?,
@@ -52,7 +52,7 @@ external make:
     ~navNext: React.element=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
-    ~onClose: Dates.tJs => unit=?,
+    ~onClose: dates => unit=?,
     ~transitionDuration: int=?, /* todo: not negative */
     /* day presentation and interaction related props */
     ~renderCalendarDay: Moment.t => StrOrNode.t=?,

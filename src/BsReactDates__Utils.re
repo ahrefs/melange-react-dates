@@ -15,18 +15,9 @@ let optMap = Js.Nullable.toOption;
 [@bs.deriving jsConverter]
 type focusedInput = [ | `startDate | `endDate];
 
-module Dates = {
-  type t = {
-    startDate: option(Moment.t),
-    endDate: option(Moment.t),
-  };
-  type tJs = {
-    .
-    "startDate": Js.nullable(Moment.t),
-    "endDate": Js.nullable(Moment.t),
-  };
-  let toJs: t => tJs = v => {"startDate": fromOpt(v.startDate), "endDate": fromOpt(v.endDate)};
-  let fromJs: tJs => t = v => {startDate: toOpt(v##startDate), endDate: toOpt(v##endDate)};
+type dates = {
+  startDate: option(Moment.t),
+  endDate: option(Moment.t),
 };
 
 module StrOrNode = {

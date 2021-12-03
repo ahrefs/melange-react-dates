@@ -8,7 +8,7 @@ external make:
   (
     ~className: string=?,
     ~daySize: int=?,
-    ~onDatesChange: Dates.tJs => unit,
+    ~onDatesChange: dates => unit,
     ~onFocusChange: Js.nullable(string) => unit,
     ~startDate: Js.Nullable.t(Moment.t)=?,
     ~endDate: Js.Nullable.t(Moment.t)=?,
