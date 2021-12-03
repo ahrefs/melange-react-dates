@@ -1,4 +1,8 @@
-## 1.0.15 (2021-12-03)
+## 1.0.2 (2021-12-03)
+
+- add `focusedInput` prop to `DayPickerRangeController`
+
+## 1.0.1 (2021-12-03)
 
 - remove `Jsx2` wrappers
 - simplify `dates` type bindings
@@ -11,7 +15,7 @@
 
 ## 0.0.14 (2019-08-06)
 
-- add `daySize` and `className` to `dayPickerRangeController`
+- add `daySize` and `className` to `DayPickerRangeController`
 
 ## 0.0.13 (2019-03-10)
 
