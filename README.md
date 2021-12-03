@@ -2,14 +2,15 @@
 
 [Reason](https://reasonml.github.io/) bindings for [react-dates](https://github.com/airbnb/react-dates).
 
-## Status
+## Status 🚧 🏗
 
-🚧 Not everything is supported yet; Unstable; Doesn't follow semver; 🚧
-
-Feel free to create an issue or PR.
+It is not completed, we are adding bindings as we go. Doesn't follow semver.
 
 ## Installation, [npm](https://www.npmjs.com/package/@ahrefs/bs-react-dates)
 
+```sh
+yarn add @ahrefs/bs-react-dates
+```
 ```sh
 npm install --save @ahrefs/bs-react-dates
 ```
@@ -39,10 +40,16 @@ To include styles
 }
 ```
 
+## Examples
+
+```js
+
+```
+
 ## TODO
 
 * [x] [DateRangePicker](https://github.com/airbnb/react-dates#daterangepicker)
 * [x] [SingleDatePicker](https://github.com/airbnb/react-dates#singledatepicker)
-* [ ] [DayPickerRangeController](https://github.com/airbnb/react-dates#daypickerrangecontroller)
-* [ ] can I/should I make it independable from `bs-moment`?
+* [x] [DayPickerRangeController](https://github.com/airbnb/react-dates#daypickerrangecontroller)
+* [ ] can/should I remove dep on `bs-moment`?
 
