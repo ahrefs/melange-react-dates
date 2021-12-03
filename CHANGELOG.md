@@ -1,3 +1,10 @@
+## 1.0.15 (2021-12-03)
+
+- remove `Jsx2` wrappers
+- simplify `dates` type bindings
+- bump `bs-platform@^9.0.2`
+- bump `reason-react@^0.9.1`
+
 ## 0.0.15 (2019-08-08)
 
 - upgrade `bs-momemt@^0.4.4`
