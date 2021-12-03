@@ -46,13 +46,3 @@ To include styles
 * [ ] [DayPickerRangeController](https://github.com/airbnb/react-dates#daypickerrangecontroller)
 * [ ] can I/should I make it independable from `bs-moment`?
 
-## Usage
-
-Please take a look at [examples](https://github.com/ahrefs/bs-react-dates/tree/master/examples).
-To run demo:
-
-```sh
-$ cd examples
-$ npm install
-$ npm start
-```

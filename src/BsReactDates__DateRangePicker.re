@@ -1,6 +1,7 @@
+// https://github.com/airbnb/react-dates#daterangepicker
+
 open BsReactDates__Utils;
-open Belt;
-open MomentRe;
+module Moment = MomentRe.Moment;
 
 [@bs.module "react-dates"] [@react.component]
 external make:
@@ -12,52 +13,43 @@ external make:
     ~startDateId: string=?,
     ~endDate: Moment.t=?,
     ~endDateId: string=?,
-    ~focusedInput: [@bs.string] [ | `startDate | `endDate]=?,
+    ~focusedInput: [ | `startDate | `endDate]=?,
     /* input related props */
     ~startDatePlaceholderText: string=?,
     ~endDatePlaceholderText: string=?,
-    ~disabled: [@bs.string] [ | `startDate | `endDate]=?,
+    ~disabled: [ | `startDate | `endDate]=?,
     ~required: bool=?,
     ~readOnly: bool=?,
     ~screenReaderInputMessage: string=?,
     ~showClearDates: bool=?,
     ~showDefaultInputIcon: bool=?,
-    ~customInputIcon: ReasonReact.reactElement=?,
-    ~customArrowIcon: ReasonReact.reactElement=?,
-    ~customCloseIcon: ReasonReact.reactElement=?,
-    ~inputIconPosition: [@bs.string] [ | `before | `after]=?,
+    ~customInputIcon: React.element=?,
+    ~customArrowIcon: React.element=?,
+    ~customCloseIcon: React.element=?,
+    ~inputIconPosition: [ | `before | `after]=?,
     ~noBorder: bool=?,
     ~block: bool=?,
     ~small: bool=?,
     ~regular: bool=?,
     /* calendar presentation and interaction related props */
     ~renderMonth: Moment.t => StrOrNode.t=?,
-    ~orientation: [@bs.string] [ | `horizontal | `vertical]=?,
-    ~anchorDirection: [@bs.string] [ | `left | `right]=?,
+    ~orientation: [ | `horizontal | `vertical]=?,
+    ~anchorDirection: [ | `left | `right]=?,
     ~horizontalMargin: int=?,
     ~withPortal: bool=?,
     ~withFullScreenPortal: bool=?,
     ~daySize: int=?, /* todo: not negative */
     ~isRTL: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
-    ~firstDayOfWeek: [@bs.int] [
-                       | `Sun
-                       | `Mon
-                       | `Tue
-                       | `Wed
-                       | `Thu
-                       | `Fri
-                       | `Sat
-                     ]
-                       =?,
+    ~firstDayOfWeek: [@bs.int] [ | `Sun | `Mon | `Tue | `Wed | `Thu | `Fri | `Sat]=?,
     ~numberOfMonths: int=?,
     ~keepOpenOnDateSelect: bool=?,
     ~reopenPickerOnClearDates: bool=?,
     ~renderCalendarInfo: unit => StrOrNode.t=?,
     ~hideKeyboardShortcutsPanel: bool=?,
     /* navigation related props */
-    ~navPrev: ReasonReact.reactElement=?,
-    ~navNext: ReasonReact.reactElement=?,
+    ~navPrev: React.element=?,
+    ~navNext: React.element=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
     ~onClose: Dates.tJs => unit=?,
@@ -80,144 +72,3 @@ external make:
   ) =>
   React.element =
   "DateRangePicker";
-
-module Jsx2 = {
-  let component = ReasonReact.statelessComponent(__MODULE__);
-
-  let make =
-      (
-        ~className=?,
-        ~onDatesChange,
-        ~onFocusChange,
-        ~startDate=?,
-        ~startDateId=?,
-        ~endDate=?,
-        ~endDateId=?,
-        ~focusedInput=?,
-        ~startDatePlaceholderText=?,
-        ~endDatePlaceholderText=?,
-        ~disabled=?,
-        ~required=?,
-        ~readOnly=?,
-        ~screenReaderInputMessage=?,
-        ~showClearDates=?,
-        ~showDefaultInputIcon=?,
-        ~customInputIcon=?,
-        ~customArrowIcon=?,
-        ~customCloseIcon=?,
-        ~inputIconPosition=?,
-        ~noBorder=?,
-        ~block=?,
-        ~small=?,
-        ~regular=?,
-        ~renderMonth=?,
-        ~orientation=?,
-        ~anchorDirection=?,
-        ~horizontalMargin=?,
-        ~withPortal=?,
-        ~withFullScreenPortal=?,
-        ~daySize=?,
-        ~isRTL=?,
-        ~initialVisibleMonth=?,
-        ~firstDayOfWeek=?,
-        ~numberOfMonths=?,
-        ~keepOpenOnDateSelect=?,
-        ~reopenPickerOnClearDates=?,
-        ~renderCalendarInfo=?,
-        ~hideKeyboardShortcutsPanel=?,
-        ~navPrev=?,
-        ~navNext=?,
-        ~onPrevMonthClick=?,
-        ~onNextMonthClick=?,
-        ~onClose=?,
-        ~transitionDuration=?,
-        ~renderCalendarDay=?,
-        ~renderDayContents=?,
-        ~minimumNights=?,
-        ~enableOutsideDays=?,
-        ~isDayBlocked=?,
-        ~isOutsideRange=?,
-        ~isDayHighlighted=?,
-        ~displayFormat=?,
-        ~monthFormat=?,
-        ~weekDayFormat=?,
-        ~phrases=?,
-        ~dayAriaLabelFormat=?,
-        children,
-      ) => {
-    let handleDatesChange = v => v->Dates.fromJs->onDatesChange;
-    let handleFocusChange = v => v->nullableFocusedInputToJs->onFocusChange;
-    let handleClose =
-      Option.map(
-        onClose,
-        func => {
-          let res = v => v->Dates.fromJs->func;
-          res;
-        },
-      );
-    ReasonReactCompat.wrapReactForReasonReact(
-      make,
-      makeProps(
-        ~className?,
-        ~onDatesChange=handleDatesChange,
-        ~onFocusChange=handleFocusChange,
-        ~startDate?,
-        ~startDateId?,
-        ~endDate?,
-        ~endDateId?,
-        ~focusedInput?,
-        ~startDatePlaceholderText?,
-        ~endDatePlaceholderText?,
-        ~disabled?,
-        ~required?,
-        ~readOnly?,
-        ~screenReaderInputMessage?,
-        ~showClearDates?,
-        ~showDefaultInputIcon?,
-        ~customInputIcon?,
-        ~customArrowIcon?,
-        ~customCloseIcon?,
-        ~inputIconPosition?,
-        ~noBorder?,
-        ~block?,
-        ~small?,
-        ~regular?,
-        ~renderMonth?,
-        ~orientation?,
-        ~anchorDirection?,
-        ~horizontalMargin?,
-        ~withPortal?,
-        ~withFullScreenPortal?,
-        ~daySize?,
-        ~isRTL?,
-        ~initialVisibleMonth?,
-        ~firstDayOfWeek?,
-        ~numberOfMonths?,
-        ~keepOpenOnDateSelect?,
-        ~reopenPickerOnClearDates?,
-        ~renderCalendarInfo?,
-        ~hideKeyboardShortcutsPanel?,
-        ~navPrev?,
-        ~navNext?,
-        ~onPrevMonthClick?,
-        ~onNextMonthClick?,
-        ~onClose=?handleClose,
-        ~transitionDuration?,
-        ~renderCalendarDay?,
-        ~renderDayContents?,
-        ~minimumNights?,
-        ~enableOutsideDays?,
-        ~isDayBlocked?,
-        ~isOutsideRange?,
-        ~isDayHighlighted?,
-        ~displayFormat=?displayFormat->DisplayFormat.encodeOpt,
-        ~monthFormat?,
-        ~weekDayFormat?,
-        ~phrases?,
-        ~dayAriaLabelFormat?,
-        (),
-      ),
-      React.array(children),
-    );
-  };
-};

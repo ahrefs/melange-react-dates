@@ -33,10 +33,11 @@
     "bs-moment": "^0.4.4",
     "moment": "^2.24.0",
     "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-dates": "^21.8.0"
   },
   "devDependencies": {
-    "bs-platform": "^6.2.0",
-    "reason-react": "^0.7.0"
+    "bs-platform": "^9.0.2",
+    "reason-react": "^0.9.1"
   }
 }

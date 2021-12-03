@@ -1,5 +1,5 @@
 open BsReactDates__Utils;
-open MomentRe;
+module Moment = MomentRe.Moment;
 
 [@bs.module "react-dates"] [@react.component]
 external make:
@@ -17,34 +17,25 @@ external make:
     ~readOnly: bool=?,
     ~screenReaderInputMessage: string=?,
     ~showClearDate: bool=?,
-    ~customCloseIcon: ReasonReact.reactElement=?,
+    ~customCloseIcon: React.element=?,
     ~showDefaultInputIcon: bool=?,
-    ~customInputIcon: ReasonReact.reactElement=?,
-    ~inputIconPosition: [@bs.string] [ | `before | `after]=?,
+    ~customInputIcon: React.element=?,
+    ~inputIconPosition: [ | `before | `after]=?,
     ~noBorder: bool=?,
     ~block: bool=?,
     ~small: bool=?,
     ~regular: bool=?,
     /* calendar presentation and interaction related props */
     ~renderMonth: Moment.t => StrOrNode.t=?,
-    ~orientation: [@bs.string] [ | `horizontal | `vertical]=?,
-    ~anchorDirection: [@bs.string] [ | `left | `right]=?,
+    ~orientation: [ | `horizontal | `vertical]=?,
+    ~anchorDirection: [ | `left | `right]=?,
     ~horizontalMargin: int=?,
     ~withPortal: bool=?,
     ~withFullScreenPortal: bool=?,
     ~appendToBody: bool=?,
     ~disableScroll: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
-    ~firstDayOfWeek: [@bs.int] [
-                       | `Sun
-                       | `Mon
-                       | `Tue
-                       | `Wed
-                       | `Thu
-                       | `Fri
-                       | `Sat
-                     ]
-                       =?,
+    ~firstDayOfWeek: [@bs.int] [ | `Sun | `Mon | `Tue | `Wed | `Thu | `Fri | `Sat]=?,
     ~numberOfMonths: int=?,
     ~keepOpenOnDateSelect: bool=?,
     ~reopenPickerOnClearDate: bool=?,
@@ -53,8 +44,8 @@ external make:
     ~daySize: int=?, /* todo: not negative */
     ~isRTL: bool=?,
     /* navigation related props */
-    ~navPrev: ReasonReact.reactElement=?,
-    ~navNext: ReasonReact.reactElement=?,
+    ~navPrev: React.element=?,
+    ~navNext: React.element=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
     ~onClose: Moment.t => unit=?,
@@ -77,129 +68,3 @@ external make:
   ) =>
   React.element =
   "SingleDatePicker";
-
-module Jsx2 = {
-  let component = ReasonReact.statelessComponent(__MODULE__);
-
-  let make =
-      (
-        ~className=?,
-        ~date=?,
-        ~onDateChange,
-        ~onFocusChange,
-        ~focused,
-        ~id,
-        ~placeholder=?,
-        ~disabled=?,
-        ~required=?,
-        ~readOnly=?,
-        ~screenReaderInputMessage=?,
-        ~showClearDate=?,
-        ~customCloseIcon=?,
-        ~showDefaultInputIcon=?,
-        ~customInputIcon=?,
-        ~inputIconPosition=?,
-        ~noBorder=?,
-        ~block=?,
-        ~small=?,
-        ~regular=?,
-        ~renderMonth=?,
-        ~orientation=?,
-        ~anchorDirection=?,
-        ~horizontalMargin=?,
-        ~withPortal=?,
-        ~withFullScreenPortal=?,
-        ~appendToBody=?,
-        ~disableScroll=?,
-        ~initialVisibleMonth=?,
-        ~firstDayOfWeek=?,
-        ~numberOfMonths=?,
-        ~keepOpenOnDateSelect=?,
-        ~reopenPickerOnClearDate=?,
-        ~renderCalendarInfo=?,
-        ~hideKeyboardShortcutsPanel=?,
-        ~daySize=?,
-        ~isRTL=?,
-        ~navPrev=?,
-        ~navNext=?,
-        ~onPrevMonthClick=?,
-        ~onNextMonthClick=?,
-        ~onClose=?,
-        ~transitionDuration=?,
-        ~renderCalendarDay=?,
-        ~renderDayContents=?,
-        ~enableOutsideDays=?,
-        ~isDayBlocked=?,
-        ~isOutsideRange=?,
-        ~isDayHighlighted=?,
-        ~displayFormat=?,
-        ~monthFormat=?,
-        ~weekDayFormat=?,
-        ~phrases=?,
-        ~dayAriaLabelFormat=?,
-        children,
-      ) => {
-    let children = React.array(children);
-    ReasonReactCompat.wrapReactForReasonReact(
-      make,
-      makeProps(
-        ~className?,
-        ~onDateChange,
-        ~onFocusChange=isFocussed => onFocusChange(isFocussed##focused),
-        ~focused,
-        ~id,
-        ~date?,
-        ~placeholder?,
-        ~disabled?,
-        ~required?,
-        ~readOnly?,
-        ~screenReaderInputMessage?,
-        ~showClearDate?,
-        ~customCloseIcon?,
-        ~showDefaultInputIcon?,
-        ~customInputIcon?,
-        ~inputIconPosition?,
-        ~noBorder?,
-        ~block?,
-        ~small?,
-        ~regular?,
-        ~renderMonth?,
-        ~orientation?,
-        ~anchorDirection?,
-        ~horizontalMargin?,
-        ~withPortal?,
-        ~withFullScreenPortal?,
-        ~appendToBody?,
-        ~disableScroll?,
-        ~initialVisibleMonth?,
-        ~firstDayOfWeek?,
-        ~numberOfMonths?,
-        ~keepOpenOnDateSelect?,
-        ~reopenPickerOnClearDate?,
-        ~renderCalendarInfo?,
-        ~hideKeyboardShortcutsPanel?,
-        ~daySize?,
-        ~isRTL?,
-        ~navPrev?,
-        ~navNext?,
-        ~onPrevMonthClick?,
-        ~onNextMonthClick?,
-        ~onClose?,
-        ~transitionDuration?,
-        ~renderCalendarDay?,
-        ~renderDayContents?,
-        ~enableOutsideDays?,
-        ~isDayBlocked?,
-        ~isOutsideRange?,
-        ~isDayHighlighted?,
-        ~displayFormat=?displayFormat->DisplayFormat.encodeOpt,
-        ~monthFormat?,
-        ~weekDayFormat?,
-        ~phrases?,
-        ~dayAriaLabelFormat?,
-        (),
-      ),
-      children,
-    );
-  };
-};
