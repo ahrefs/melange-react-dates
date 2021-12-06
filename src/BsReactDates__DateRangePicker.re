@@ -8,7 +8,7 @@ external make:
   (
     ~className: string=?,
     ~onDatesChange: dates => unit,
-    ~onFocusChange: option(focusedInput) => unit,
+    ~onFocusChange: Js.nullable(focusedInput) => unit,
     ~startDate: Moment.t=?,
     ~startDateId: string=?,
     ~endDate: Moment.t=?,

@@ -9,7 +9,7 @@ external make:
     ~className: string=?,
     ~daySize: int=?,
     ~onDatesChange: dates => unit,
-    ~onFocusChange: option(focusedInput) => unit,
+    ~onFocusChange: Js.nullable(focusedInput) => unit,
     ~startDate: option(Moment.t)=?,
     ~endDate: option(Moment.t)=?,
     ~focusedInput: focusedInput=?,
