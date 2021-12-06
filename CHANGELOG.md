@@ -1,3 +1,7 @@
+## 1.1.0 (2021-12-06)
+
+- onFocusChanged returns `Js.Nullable` indeed
+
 ## 1.0.2 (2021-12-03)
 
 - bind onFocusChange using `option` instead of `Js.Nullable`
