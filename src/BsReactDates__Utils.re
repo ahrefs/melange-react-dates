@@ -9,9 +9,15 @@ let _ = BsReactDates__Initialize.initialize;
 [@bs.deriving jsConverter]
 type focusedInput = [ | `startDate | `endDate];
 
+/*
+  Unfortunately, lots of times, your JavaScript value might be both null or undefined. In that case, you unfortunately can't type such value as e.g. option<int>, since our option type only checks for undefined and not null when dealing with a None.
+
+  Solution: More Sophisticated undefined & null Interop
+  To solve this, we provide access to more elaborate null and undefined helpers through the Js.Nullable module. This somewhat works like an option type, but is different from it.
+ */
 type dates = {
-  startDate: option(Moment.t),
-  endDate: option(Moment.t),
+  startDate: Js.nullable(Moment.t),
+  endDate: Js.nullable(Moment.t),
 };
 
 module StrOrNode = {
