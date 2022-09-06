@@ -1,3 +1,7 @@
+## 1.2.0 (2022-09-06)
+
+- update `dates` type from `option` to `Js.Nullable`
+
 ## 1.1.0 (2021-12-06)
 
 - onFocusChanged returns `Js.Nullable` indeed
