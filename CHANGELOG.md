@@ -1,3 +1,7 @@
+## 1.2.1 (2023-01-30)
+
+- Add `DayPickerSingleDateController` alias
+
 ## 1.2.0 (2022-09-06)
 
 - update `dates` type from `option` to `Js.Nullable`
