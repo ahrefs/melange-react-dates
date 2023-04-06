@@ -1,3 +1,7 @@
+## 1.3.0 (2023-04-06)
+
+- Cleanup dependencies
+
 ## 1.2.1 (2023-01-30)
 
 - Add `DayPickerSingleDateController` alias
