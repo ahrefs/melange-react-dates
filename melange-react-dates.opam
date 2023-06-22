@@ -3,6 +3,7 @@ synopsis: "Melange bindings for react-dates"
 maintainer: "Ahrefs"
 authors: "Ahrefs"
 license: "MIT"
+tags: ["melange" "react-js" "org:ahrefs"]
 homepage: "https://github.com/ahrefs/melange-react-dates"
 bug-reports: "https://github.com/ahrefs/melange-react-dates"
 depends: [
