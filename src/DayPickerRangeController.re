@@ -1,6 +1,6 @@
 // https://github.com/airbnb/react-dates#daypickerrangecontroller
 
-open BsReactDates__Utils;
+open Utils;
 module Moment = MomentRe.Moment;
 
 [@bs.module "react-dates"] [@react.component]
@@ -42,7 +42,7 @@ external make:
     ~isDayHighlighted: Moment.t => bool=?,
     // internationalization props
     ~monthFormat: string=?,
-    ~phrases: BsReactDates__DateRangePickerPhrases.t=?,
+    ~phrases: DateRangePickerPhrases.t=?,
     ~dayAriaLabelFormat: string=?
   ) =>
   React.element =

@@ -3,7 +3,7 @@ module Moment = MomentRe.Moment;
 
 /* Have to call initialize in order this to work
  * https://github.com/airbnb/react-dates#initialize */
-let _ = BsReactDates__Initialize.initialize;
+let _ = Initialize.initialize;
 
 /* Utils */
 [@bs.deriving jsConverter]
