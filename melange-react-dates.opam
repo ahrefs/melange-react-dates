@@ -1,0 +1,36 @@
+opam-version: "2.0"
+synopsis: "Melange bindings for react-dates"
+maintainer: "Ahrefs"
+authors: "Ahrefs"
+license: "MIT"
+tags: ["melange" "react-js" "org:ahrefs"]
+homepage: "https://github.com/ahrefs/melange-react-dates"
+bug-reports: "https://github.com/ahrefs/melange-react-dates"
+depends: [
+  "dune" {>= "3.8"}
+  "ocaml" {>= "4.14.0"}
+  "melange" {>= "1.0.0"}
+  "reason"
+  "melange-moment"
+  "reason-react"
+  "odoc" {with-doc}
+]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/ahrefs/melange-react-dates.git"
+
+pin-depends: [
+  [ "melange-moment.dev" "git+https://github.com/ahrefs/melange-moment.git#28e5f6cd81866699551c61ef1fbc3f75a4b57d43" ]
+]

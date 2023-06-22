@@ -1,27 +1,38 @@
-# Reason bindings for react-dates
+# Melange bindings for react-dates
 
-[Reason](https://reasonml.github.io/) bindings for [react-dates](https://github.com/airbnb/react-dates).
+[Melange](https://melange.re/) bindings for [react-dates](https://github.com/airbnb/react-dates).
 
 ## Status 🚧 🏗
 
 It is not completed, we are adding bindings as we go. Doesn't follow semver.
 
-## Installation, [npm](https://www.npmjs.com/package/@ahrefs/bs-react-dates)
+## Installation
 
-```sh
-yarn add @ahrefs/bs-react-dates
+Install [opam](https://opam.ocaml.org/) package manager.
+
+Then:
+
 ```
-```sh
-npm install --save @ahrefs/bs-react-dates
+opam pin add melange-react-dates.dev git+https://github.com/ahrefs/melange-react-dates.git#master
 ```
 
-Then add `@ahrefs/bs-react-dates` to `bs-dependencies` in your `bsconfig.json`:
+The bindings support the following versions of the `react-dates`
+npm package, which should be installed separately:
 
-```js
-{
-  ...
-  "bs-dependencies": ["@ahrefs/bs-react-dates"]
-}
+```json
+  "dependencies": {
+    "react-dates": "^21.8.0"
+  }
+```
+
+## Setup
+
+Add `melange-react-dates` to the `libraries` field in your `dune` file:
+
+```dune
+; ...
+  (libraries melange-react-dates)
+; ...
 ```
 
 To include styles

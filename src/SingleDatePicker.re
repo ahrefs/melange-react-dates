@@ -1,31 +1,25 @@
-// https://github.com/airbnb/react-dates#daterangepicker
-
-open BsReactDates__Utils;
+open Utils;
 module Moment = MomentRe.Moment;
 
 [@bs.module "react-dates"] [@react.component]
 external make:
   (
     ~className: string=?,
-    ~onDatesChange: dates => unit,
-    ~onFocusChange: Js.nullable(focusedInput) => unit,
-    ~startDate: Moment.t=?,
-    ~startDateId: string=?,
-    ~endDate: Moment.t=?,
-    ~endDateId: string=?,
-    ~focusedInput: focusedInput=?,
+    ~onDateChange: Moment.t => unit,
+    ~onFocusChange: {. "focused": bool} => unit,
+    ~focused: bool,
+    ~id: string,
+    ~date: Moment.t=?,
     /* input related props */
-    ~startDatePlaceholderText: string=?,
-    ~endDatePlaceholderText: string=?,
-    ~disabled: focusedInput=?,
+    ~placeholder: string=?,
+    ~disabled: bool=?,
     ~required: bool=?,
     ~readOnly: bool=?,
     ~screenReaderInputMessage: string=?,
-    ~showClearDates: bool=?,
+    ~showClearDate: bool=?,
+    ~customCloseIcon: React.element=?,
     ~showDefaultInputIcon: bool=?,
     ~customInputIcon: React.element=?,
-    ~customArrowIcon: React.element=?,
-    ~customCloseIcon: React.element=?,
     ~inputIconPosition: [ | `before | `after]=?,
     ~noBorder: bool=?,
     ~block: bool=?,
@@ -38,26 +32,27 @@ external make:
     ~horizontalMargin: int=?,
     ~withPortal: bool=?,
     ~withFullScreenPortal: bool=?,
-    ~daySize: int=?, /* todo: not negative */
-    ~isRTL: bool=?,
+    ~appendToBody: bool=?,
+    ~disableScroll: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
     ~firstDayOfWeek: [@bs.int] [ | `Sun | `Mon | `Tue | `Wed | `Thu | `Fri | `Sat]=?,
     ~numberOfMonths: int=?,
     ~keepOpenOnDateSelect: bool=?,
-    ~reopenPickerOnClearDates: bool=?,
+    ~reopenPickerOnClearDate: bool=?,
     ~renderCalendarInfo: unit => StrOrNode.t=?,
     ~hideKeyboardShortcutsPanel: bool=?,
+    ~daySize: int=?, /* todo: not negative */
+    ~isRTL: bool=?,
     /* navigation related props */
     ~navPrev: React.element=?,
     ~navNext: React.element=?,
     ~onPrevMonthClick: Moment.t => unit=?,
     ~onNextMonthClick: Moment.t => unit=?,
-    ~onClose: dates => unit=?,
+    ~onClose: Moment.t => unit=?,
     ~transitionDuration: int=?, /* todo: not negative */
     /* day presentation and interaction related props */
     ~renderCalendarDay: Moment.t => StrOrNode.t=?,
     ~renderDayContents: Moment.t => StrOrNode.t=?,
-    ~minimumNights: int=?,
     ~enableOutsideDays: bool=?,
     ~isDayBlocked: Moment.t => bool=?,
     ~isOutsideRange: Moment.t => bool=?,
@@ -66,9 +61,10 @@ external make:
     ~displayFormat: DisplayFormat.t=?,
     ~monthFormat: string=?,
     ~weekDayFormat: string=?,
-    ~phrases: BsReactDates__DateRangePickerPhrases.t=?,
+    ~phrases: DateRangePickerPhrases.t=?,
     ~dayAriaLabelFormat: string=?,
+    ~children: React.element=?,
     unit
   ) =>
   React.element =
-  "DateRangePicker";
+  "SingleDatePicker";

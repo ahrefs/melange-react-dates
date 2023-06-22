@@ -1,4 +1,4 @@
-open BsReactDates__Utils;
+open Utils;
 module Moment = MomentRe.Moment;
 
 [@bs.module "react-dates"] [@react.component]
