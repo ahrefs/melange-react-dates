@@ -6,7 +6,7 @@ module Moment = MomentRe.Moment;
 let _ = Initialize.initialize;
 
 /* Utils */
-[@bs.deriving jsConverter]
+[@deriving jsConverter]
 type focusedInput = [ | `startDate | `endDate];
 
 /*

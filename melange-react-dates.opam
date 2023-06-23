@@ -32,5 +32,5 @@ build: [
 dev-repo: "git+https://github.com/ahrefs/melange-react-dates.git"
 
 pin-depends: [
-  [ "melange-moment.dev" "git+https://github.com/ahrefs/melange-moment.git#28e5f6cd81866699551c61ef1fbc3f75a4b57d43" ]
+  [ "melange-moment.dev" "git+https://github.com/ahrefs/melange-moment.git#646da3e7014e61dc7b543593b10eef3269d38ce3" ]
 ]
