@@ -1,7 +1,7 @@
 open Utils;
 module Moment = MomentRe.Moment;
 
-[@bs.module "react-dates"] [@react.component]
+[@mel.module "react-dates"] [@react.component]
 external make:
   (
     ~className: string=?,
@@ -35,7 +35,7 @@ external make:
     ~appendToBody: bool=?,
     ~disableScroll: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
-    ~firstDayOfWeek: [@bs.int] [ | `Sun | `Mon | `Tue | `Wed | `Thu | `Fri | `Sat]=?,
+    ~firstDayOfWeek: [@mel.int] [ | `Sun | `Mon | `Tue | `Wed | `Thu | `Fri | `Sat]=?,
     ~numberOfMonths: int=?,
     ~keepOpenOnDateSelect: bool=?,
     ~reopenPickerOnClearDate: bool=?,
