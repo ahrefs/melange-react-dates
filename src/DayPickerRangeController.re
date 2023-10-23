@@ -20,7 +20,7 @@ external make:
     ~withPortal: bool=?,
     ~initialVisibleMonth: unit => Moment.t=?,
     ~renderCalendarInfo: unit => StrOrNode.t=?,
-    ~onOutsideClick: ReactEvent.Mouse.t => unit=?,
+    ~onOutsideClick: React.Event.Mouse.t => unit=?,
     ~keepOpenOnDateSelect: bool=?,
     ~noBorder: bool=?,
     // navigation related props
