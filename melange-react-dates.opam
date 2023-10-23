@@ -12,8 +12,8 @@ depends: [
   "melange" {>= "2.0.0"}
   "reason"
   "melange-moment"
-  "reason-react"
-  "reason-react-ppx"
+  "reason-react" {>= "0.14.0"}
+  "reason-react-ppx" {>= "0.14.0"}
   "odoc" {with-doc}
 ]
 build: [
