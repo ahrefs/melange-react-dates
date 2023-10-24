@@ -1,6 +1,7 @@
-## Unreleased
+## 1.4.0 (2023-10-24)
 
-- Migrate to opam and Melange
+- Migrate to Melange v2
+
 ## 1.3.0 (2023-04-06)
 
 - Cleanup dependencies
