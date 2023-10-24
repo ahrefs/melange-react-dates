@@ -3,4 +3,4 @@
  (public_name melange-react-dates)
  (modes melange)
  (libraries melange-moment reason-react)
- (preprocess (pps melange.ppx reactjs-jsx-ppx)))
+ (preprocess (pps melange.ppx reason-react-ppx)))

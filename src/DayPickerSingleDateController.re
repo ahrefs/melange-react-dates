@@ -1,7 +1,7 @@
 open Utils;
 module Moment = MomentRe.Moment;
 
-[@bs.module "react-dates"] [@react.component]
+[@mel.module "react-dates"] [@react.component]
 external make:
   (
     ~className: string=?,

@@ -39,3 +39,5 @@ TODO.md
 /src/*.bs.js
 _opam
 _build
+
+.vscode

@@ -1,6 +1,6 @@
 type t;
 
-[@bs.obj]
+[@mel.obj]
 external make :
   (
     ~className: string=?,
