@@ -2,5 +2,5 @@
  (name reactDates)
  (public_name melange-react-dates)
  (modes melange)
- (libraries melange-moment reason-react)
+ (libraries melange-moment.mjs reason-react)
  (preprocess (pps melange.ppx reason-react-ppx)))
