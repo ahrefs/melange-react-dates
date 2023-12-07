@@ -35,7 +35,6 @@ depexts: [
   ["react-dates"] {npm-version = "^21.8.0"}
 ]
 pin-depends: [
-  [ "melange-moment.dev"    "git+https://github.com/ahrefs/melange-moment.git#646da3e7014e61dc7b543593b10eef3269d38ce3" ]
   [ "reason-react.dev"      "git+https://github.com/reasonml/reason-react.git#7ca984c9a406b01e906fda1898f705f135fad202" ]
   [ "reason-react-ppx.dev"  "git+https://github.com/reasonml/reason-react.git#7ca984c9a406b01e906fda1898f705f135fad202" ]
 ]

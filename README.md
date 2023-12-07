@@ -12,8 +12,8 @@ Install [opam](https://opam.ocaml.org/) package manager.
 
 Then:
 
-```
-opam pin add melange-react-dates.dev git+https://github.com/ahrefs/melange-react-dates.git#master
+```sh
+opam install melange-react-dates
 ```
 
 The bindings support the following versions of the `react-dates`
@@ -29,7 +29,7 @@ npm package, which should be installed separately:
 
 Add `melange-react-dates` to the `libraries` field in your `dune` file:
 
-```dune
+```clojure
 ; ...
   (libraries melange-react-dates)
 ; ...
@@ -37,7 +37,7 @@ Add `melange-react-dates` to the `libraries` field in your `dune` file:
 
 To include styles
 
-```js
+```reason
 [%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
 ```
 
@@ -53,7 +53,7 @@ To include styles
 
 ## Examples
 
-```js
+```reason
 [%bs.raw {|require('react-dates/lib/css/_datepicker.css')|}];
 
 [@react.component]
