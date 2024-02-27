@@ -1,5 +1,5 @@
 open Utils;
-module Moment = MomentRe.Moment;
+module Moment = MomentReMjs.Moment;
 
 [@mel.module "react-dates"] [@react.component]
 external make:

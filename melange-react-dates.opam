@@ -34,3 +34,6 @@ dev-repo: "git+https://github.com/ahrefs/melange-react-dates.git"
 depexts: [
   ["react-dates"] {npm-version = "^21.8.0"}
 ]
+pin-depends: [
+  [ "melange-moment.dev" "git+https://github.com/ahrefs/melange-moment.git#0c11b2fdf0525686bf37c85be41f62c5e8d8ba1a" ]
+]
