@@ -1,4 +1,4 @@
-module Moment = MomentRe.Moment;
+module Moment = MomentReMjs.Moment;
 
 /* Have to call initialize in order this to work
  * https://github.com/airbnb/react-dates#initialize */
