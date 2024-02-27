@@ -12,8 +12,8 @@ depends: [
   "melange" {>= "2.0.0"}
   "reason"
   "melange-moment"
-  "reason-react"
-  "reason-react-ppx"
+  "reason-react" {>= "0.14.0"}
+  "reason-react-ppx" {>= "0.14.0"}
   "odoc" {with-doc}
 ]
 build: [
@@ -33,4 +33,10 @@ build: [
 dev-repo: "git+https://github.com/ahrefs/melange-react-dates.git"
 depexts: [
   ["react-dates"] {npm-version = "^21.8.0"}
+]
+pin-depends: [
+  ["melange.dev" "git+https://github.com/melange-re/melange#982cba971fa662439f0675465ef854424771ca3d"]
+  ["reason-react.dev" "https://github.com/reasonml/reason-react/archive/f799ac03d79d39de04fe937075607c348f8053b4.tar.gz"]
+  ["reason-react-ppx.dev" "https://github.com/reasonml/reason-react/archive/f799ac03d79d39de04fe937075607c348f8053b4.tar.gz"]
+  [ "melange-moment.dev" "git+https://github.com/ahrefs/melange-moment.git#0c11b2fdf0525686bf37c85be41f62c5e8d8ba1a" ]
 ]

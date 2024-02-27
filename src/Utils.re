@@ -1,5 +1,4 @@
-open Belt;
-module Moment = MomentRe.Moment;
+module Moment = MomentReMjs.Moment;
 
 /* Have to call initialize in order this to work
  * https://github.com/airbnb/react-dates#initialize */
@@ -29,7 +28,7 @@ module StrOrNode = {
     fun
     | Str(v) => Obj.magic(v)
     | Node(v) => Obj.magic(v);
-  let encodeOpt = Option.map(_, encode);
+  let encodeOpt = Option.map(encode);
 };
 
 module DisplayFormat = {
@@ -42,7 +41,8 @@ module DisplayFormat = {
     fun
     | Str(v) => Obj.magic(v)
     | Func(v) => Obj.magic(v);
-  let encodeOpt = Option.map(_, encode);
+  let encodeOpt = Option.map(encode);
 };
 
-let nullableFocusedInputToJs = v => v->Js.toOption->(Option.map(focusedInputFromJs))->(Option.flatMap(x => x));
+let nullableFocusedInputToJs = v =>
+  v |> Js.toOption |> Option.map(focusedInputFromJs) |> Option.bind(_, x => x);
